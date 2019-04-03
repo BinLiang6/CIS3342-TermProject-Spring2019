@@ -66,5 +66,8 @@ namespace TermProjectWS.Controllers
 
             return productList;
         }
+
+        [HttpPost()]
+        []
     }
 }
