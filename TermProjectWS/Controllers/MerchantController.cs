@@ -81,9 +81,9 @@ namespace TermProjectWS.Controllers
 
             //Check if there is already an username stored in the database
             objCommand.CommandType = CommandType.StoredProcedure;
-            objCommand.CommandText = "TP_GetMerchant_By_ApiKeyAndUsername";
+            objCommand.CommandText = "TP_GetMerchant_By_ApiKeyAndSeller";
             objCommand.Parameters.AddWithValue("@theAPI", merchant.Apikey);
-            objCommand.Parameters.AddWithValue("@theUsername", merchant.Seller_site);
+            objCommand.Parameters.AddWithValue("@theSeller", merchant.Seller_site);
             DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
 
             if (myDS.Tables[0].Rows.Count == 0) //If there is no other apikey or username already exists
@@ -94,7 +94,7 @@ namespace TermProjectWS.Controllers
                     objCommand.CommandType = CommandType.StoredProcedure;
                     objCommand.CommandText = "TP_AddMerchant";
                     objCommand.Parameters.AddWithValue("@theAPI", merchant.Apikey);
-                    objCommand.Parameters.AddWithValue("@theUsername", merchant.Seller_site);
+                    objCommand.Parameters.AddWithValue("@theSeller", merchant.Seller_site);
                     objCommand.Parameters.AddWithValue("@theDesc", merchant.Desc);
                     objCommand.Parameters.AddWithValue("@theEmail", merchant.Email);
                     objCommand.Parameters.AddWithValue("@thePhone", merchant.Phone);
@@ -115,17 +115,23 @@ namespace TermProjectWS.Controllers
         //API Record purchase
         [HttpPost()]
         [HttpPost("Record/Purchase")]
-        public Boolean RecordPurchase(String product_id, int quantity, string apikey, [FromBody]CustomerInfo customer)
+        public Boolean RecordPurchase(int quantity, int product_id, String apikey, String seller_site, [FromBody]CustomerInfo customer)
         {
-            if (quantity != null && product_id != "" &&  customer != null)
+
+
+            if (customer != null)
             {
                 objCommand.Parameters.Clear();
                 objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "";
-                objCommand.Parameters.AddWithValue("@", customer.Name);
-                objCommand.Parameters.AddWithValue("@", customer.Address);
-                objCommand.Parameters.AddWithValue("@", customer.Phone);
-                objCommand.Parameters.AddWithValue("@", customer.Email);
+                objCommand.CommandText = "TP_AddOrder";
+                objCommand.Parameters.AddWithValue("@theQuantity", quantity);
+                objCommand.Parameters.AddWithValue("@theProductID", product_id);
+                objCommand.Parameters.AddWithValue("@theAPI", apikey);
+                objCommand.Parameters.AddWithValue("@theSeller", seller_site);
+                objCommand.Parameters.AddWithValue("@theName", customer.Name);
+                objCommand.Parameters.AddWithValue("@theAddress", customer.Address);
+                objCommand.Parameters.AddWithValue("@thePhone", customer.Phone);
+                objCommand.Parameters.AddWithValue("@theEmail", customer.Email);
 
                 int returnValue = objDB.DoUpdateUsingCmdObj(objCommand);
 
