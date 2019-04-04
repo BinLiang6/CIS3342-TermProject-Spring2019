@@ -12,8 +12,6 @@ namespace ClassLibrary
 
         public Department()
         {
-            department_id = 0;
-            name = "";
         }
 
         public int Department_ID
