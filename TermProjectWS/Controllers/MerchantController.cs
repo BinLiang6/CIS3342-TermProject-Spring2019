@@ -115,23 +115,45 @@ namespace TermProjectWS.Controllers
         //API Record purchase
         [HttpPost()]
         [HttpPost("Record/Purchase")]
-        public Boolean RecordPurchase(int quantity, int product_id, String apikey, String seller_site, [FromBody]CustomerInfo customer)
+        public Boolean RecordPurchase([FromBody]Order order)
         {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetProduct_By_ProductID";
+            objCommand.Parameters.AddWithValue("@theID", order.Product_ID);
+            DataSet apikeyDS = objDB.GetDataSetUsingCmdObj(objCommand);
+            order.Apikey = apikeyDS.Tables[0].Rows[0]["apikey"].ToString();
 
+            objCommand.Parameters.Clear();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetSeller_By_APIKey";
+            objCommand.Parameters.AddWithValue("@theAPI", order.Apikey);
+            DataSet sellerDS = objDB.GetDataSetUsingCmdObj(objCommand);
+            order.Seller_site = sellerDS.Tables[0].Rows[0]["seller_site"].ToString();
 
-            if (customer != null)
+            objCommand.Parameters.Clear();
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetCustomerInfo_By_Username";
+            objCommand.Parameters.AddWithValue("@theID", order.Customer_ID);
+            DataSet custDS = objDB.GetDataSetUsingCmdObj(objCommand);
+            order.Name = custDS.Tables[0].Rows[0]["name"].ToString();
+            order.Address = custDS.Tables[0].Rows[0]["address"].ToString();
+            order.Phone = custDS.Tables[0].Rows[0]["phone"].ToString();
+            order.Email = custDS.Tables[0].Rows[0]["email"].ToString();
+
+            if (order != null)
             {
                 objCommand.Parameters.Clear();
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.CommandText = "TP_AddOrder";
-                objCommand.Parameters.AddWithValue("@theQuantity", quantity);
-                objCommand.Parameters.AddWithValue("@theProductID", product_id);
-                objCommand.Parameters.AddWithValue("@theAPI", apikey);
-                objCommand.Parameters.AddWithValue("@theSeller", seller_site);
-                objCommand.Parameters.AddWithValue("@theName", customer.Name);
-                objCommand.Parameters.AddWithValue("@theAddress", customer.Address);
-                objCommand.Parameters.AddWithValue("@thePhone", customer.Phone);
-                objCommand.Parameters.AddWithValue("@theEmail", customer.Email);
+                objCommand.Parameters.AddWithValue("@theQuantity", order.Quantity);
+                objCommand.Parameters.AddWithValue("@theProductID", order.Product_ID);
+                objCommand.Parameters.AddWithValue("@theAPI", order.Apikey);
+                objCommand.Parameters.AddWithValue("@theSeller", order.Seller_site);
+                objCommand.Parameters.AddWithValue("@theID", order.Customer_ID);
+                objCommand.Parameters.AddWithValue("@theName", order.Name);
+                objCommand.Parameters.AddWithValue("@theAddress", order.Address);
+                objCommand.Parameters.AddWithValue("@thePhone", order.Phone);
+                objCommand.Parameters.AddWithValue("@theEmail", order.Email);
 
                 int returnValue = objDB.DoUpdateUsingCmdObj(objCommand);
 
