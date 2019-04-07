@@ -12,7 +12,7 @@ namespace ClassLibrary
         private double price;
         private String image;
         private int department_id;
-        private int merchant_id;
+        private String apikey;
 
         public Product()
         {
@@ -40,18 +40,6 @@ namespace ClassLibrary
         {
             set { this.image = value; }
             get { return image; }
-        }
-
-        public int Department_ID
-        {
-            set { this.department_id = value; }
-            get { return department_id; }
-        }
-
-        public int Merchant_ID
-        {
-            set { this.merchant_id = value; }
-            get { return merchant_id; }
         }
     }
 }
