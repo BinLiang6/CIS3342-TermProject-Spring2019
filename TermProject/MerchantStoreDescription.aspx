@@ -267,7 +267,7 @@ mso-hansi-theme-font:minor-latin;mso-bidi-theme-font:minor-latin;color:black;
 mso-themecolor:text1"><o:p>&nbsp;</o:p></span></pre>
             <h2>Get Product by Department Number API Method</h2>
             <p class="MsoNormal">
-                This API method will get all of the products that belong to a specific department. Please replace (DepartmentID) with your desired department ID<o:p></o:p></p>
+                This API method will get all of the products that belong to a specific department. Please replace (DepartmentID) with your desired department ID<o:p>.</o:p></p>
             <p class="MsoNormal">
                 URL:</p>
             <p class="MsoNormal">
