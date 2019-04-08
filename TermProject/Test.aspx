@@ -27,7 +27,14 @@
                 <asp:ListItem Value="5">Home and Kitchen</asp:ListItem>
             </asp:DropDownList>
             <br />
-            <asp:GridView ID="gvProducts" runat="server">
+            <br />
+            <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="product_id" HeaderText="Product Number" />
+                    <asp:BoundField DataField="desc" HeaderText="Description" />
+                    <asp:BoundField DataField="price" HeaderText="Price" />
+                    <asp:BoundField DataField="image" HeaderText="Image" />
+                </Columns>
             </asp:GridView>
             <br />
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Get Product by Department Number" />
@@ -59,6 +66,41 @@
             <p>
                 <asp:Button ID="btnAddMerchant" runat="server" OnClick="btnAddMerchant_Click" Text="Submit" />
             </p>
+            <br />
+            <h1>RECORD PURCHASE API</h1>
+            <br />
+
+            <p>
+                <asp:Label ID="Label5"  type="number"  runat="server" Text="Quantity"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtQTY" type="number" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <asp:Label ID="Label6"  type="number"  runat="server" Text="Product Number"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtProductID" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                <asp:Label ID="Label7" runat="server" Text="Customer ID"></asp:Label>
+&nbsp;&nbsp;&nbsp;
+                <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+            </p>
+            <p>
+                &nbsp;</p>
+            <p>
+                <asp:Label ID="lblNotify2" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
+            </p>
+            <p>
+                &nbsp;</p>
+            <p>
+                <asp:Button ID="RecordPurchase" runat="server" OnClick="RecordPurchase_Click" Text="Submit" />
+            </p>
+            <p>
+                &nbsp;</p>
+            <p>
+                &nbsp;</p>
+            <p>
+                &nbsp;</p>
             <p>&nbsp;</p>
             <p>&nbsp;</p>
         </div>
