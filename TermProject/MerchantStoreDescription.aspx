@@ -285,7 +285,7 @@ Consolas;mso-bidi-font-family:Consolas;color:#A31515"><a href="http://cis-iis2.t
                 <o:p>&nbsp;</o:p></p>
             <h2>Register Merchant API Method</h2>
             <p class="MsoNormal">
-                This API method will add a merchant to the database by adding the merchant seller site, description, email and phone number<o:p></o:p></p>
+                This API method will add a merchant to the database by adding the merchant seller site, description, email and phone number<o:p>.</o:p></p>
             <p class="MsoNormal">
                 URL:</p>
             <p class="MsoNormal">
