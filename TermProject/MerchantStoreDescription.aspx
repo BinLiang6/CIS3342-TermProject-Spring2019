@@ -243,7 +243,7 @@ text-indent:.25in">
             <p class="MsoNormal">
             <h2>Get All Department API Method</h2>
             <p class="MsoNormal">
-                This API method will get all of the departments in the database<o:p></o:p></p>
+                This API method will get all of the departments in the database<o:p>.</o:p></p>
             <p class="MsoNormal">
                 URL:</p>
             <p class="MsoNormal">
