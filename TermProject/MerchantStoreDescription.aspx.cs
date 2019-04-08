@@ -13,5 +13,10 @@ namespace TermProject
         {
 
         }
+
+        protected void lbtnClass_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

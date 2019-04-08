@@ -16,7 +16,7 @@ namespace TermProject
 {
     public partial class Test : System.Web.UI.Page
     {
-        string url = "";
+        string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -64,15 +64,64 @@ namespace TermProject
 
         protected void btnAddMerchant_Click(object sender, EventArgs e)
         {
-            Merchant merchant = new Merchant();
+            try
+            {
+                url = url + "Register/Merchant/";
+                Merchant merchant = new Merchant();
 
-            merchant.Seller_site = txtUsername.Text;
-            merchant.Desc = txtDesc.Text;
-            merchant.Email = txtEmail.Text;
-            merchant.Phone = txtPhone.Text;
+                merchant.Seller_site = txtUsername.Text;
+                merchant.Desc = txtDesc.Text;
+                merchant.Email = txtEmail.Text;
+                merchant.Phone = txtPhone.Text;
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string jsonMerchant = js.Serialize(merchant);
+
+                WebRequest request = WebRequest.Create(url);
+                request.Method = "POST";
+                request.ContentLength = jsonMerchant.Length;
+                request.ContentType = "application/json";
+
+                StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                writer.Write(jsonMerchant);
+                writer.Flush();
+                writer.Close();
+
+                WebResponse response = request.GetResponse();
+                Stream theDataStream = response.GetResponseStream();
+                StreamReader streamReader = new StreamReader(theDataStream);
+                String data = streamReader.ReadToEnd();
+                streamReader.Close();
+                response.Close();
+
+                if (data == "true")
+                {
+                    lblNotify.Text = "Successfully added a merchant!";
+                }
+                else
+                {
+                    lblNotify.Text = "An error occurred! The username is already exists!";
+                }
+
+                lblNotify.Visible = true;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+           
+        }
+        protected void RecordPurchase_Click(object sender, EventArgs e)
+        {
+            url = url + "Record/Purchase/";
+
+            Order order = new Order();
+            order.Customer_ID = Int32.Parse(txtCustomerID.Text);
+            order.Product_ID = Int32.Parse(txtProductID.Text);
+            order.Quantity = Int32.Parse(txtQTY.Text);
 
             JavaScriptSerializer js = new JavaScriptSerializer();
-            string jsonMerchant = js.Serialize(merchant);
+            string jsonMerchant = js.Serialize(order);
 
             WebRequest request = WebRequest.Create(url);
             request.Method = "POST";
@@ -93,12 +142,14 @@ namespace TermProject
 
             if (data == "true")
             {
-                lblNotify.Text = "Successfully added a merchant!";
+                lblNotify2.Text = "Successfully added a merchant!";
             }
             else
             {
-                lblNotify.Text = "An error occurred! Please try again";
+                lblNotify2.Text = "An error occurred! Please try again";
             }
+
+            lblNotify2.Visible = true;
         }
     }
 }
