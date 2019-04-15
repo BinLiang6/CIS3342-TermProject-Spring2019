@@ -23,6 +23,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <article class="card-body">
+                                <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Sign in successfully!" Visible="false" ></asp:Label>
                         <h2 class="card-title mb-4 mt-1">Sign in</h2>
                         <div class="form-group">
                             <label><b>Username</b></label>
@@ -42,7 +43,6 @@
                                     Keep me signed in
                                 </label>
                                 <asp:Label ID="lblDisplay" class="float-right" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-                                <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Sign in successfully!" Visible="false" ></asp:Label>
                             </div>
                             <!-- checkbox .// -->
                         </div>
@@ -53,7 +53,7 @@
                         <hr />
                         <div class="form-group">
                             <p style="text-align: center;">-- New to Amazon? --</p>
-                            <a href="#" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
+                            <a href="CustomerRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
                         </div>
                     </article>
                 </div>

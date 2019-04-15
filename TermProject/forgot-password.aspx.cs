@@ -73,6 +73,7 @@ namespace TermProject
                 txtQuestion1.ReadOnly = true;
                 txtQuestion2.ReadOnly = true;
                 txtQuestion3.ReadOnly = true;
+                securityQuestion.Visible = false;
             }
             else
             {
