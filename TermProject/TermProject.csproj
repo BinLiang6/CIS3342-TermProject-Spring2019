@@ -74,6 +74,7 @@
     <Content Include="login.aspx" />
     <Content Include="MerchantRegistration.aspx" />
     <Content Include="MerchantStoreDescription.aspx" />
+    <Content Include="ShoppingSite.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -84,7 +85,7 @@
     </Compile>
     <Compile Include="CustomerRegistration.aspx.designer.cs">
       <DependentUpon>CustomerRegistration.aspx</DependentUpon>
-    </Compile>  
+    </Compile>
     <Compile Include="forgot-password.aspx.cs">
       <DependentUpon>forgot-password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -114,6 +115,13 @@
       <DependentUpon>MerchantStoreDescription.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingSite.aspx.cs">
+      <DependentUpon>ShoppingSite.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShoppingSite.aspx.designer.cs">
+      <DependentUpon>ShoppingSite.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

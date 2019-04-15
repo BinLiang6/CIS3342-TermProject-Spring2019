@@ -27,7 +27,7 @@
                         <h2 class="card-title mb-4 mt-1">Sign in</h2>
                         <div class="form-group">
                             <label><b>Username</b></label>
-                            <asp:TextBox ID="txtUsername" class="form-control" runat="server" placeholder="username" type="text" />
+                            <asp:TextBox ID="txtUsername" class="form-control" runat="server" placeholder="Username" type="text" />
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
