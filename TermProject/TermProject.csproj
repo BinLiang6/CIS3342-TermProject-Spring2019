@@ -67,15 +67,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CustomerRegistration.aspx" />
     <Content Include="bootstrap-style.css" />
     <Content Include="forgot-password.aspx" />
     <Content Include="img\amazon.jpg" />
     <Content Include="login.aspx" />
+    <Content Include="MerchantRegistration.aspx" />
     <Content Include="MerchantStoreDescription.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerRegistration.aspx.cs">
+      <DependentUpon>CustomerRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerRegistration.aspx.designer.cs">
+      <DependentUpon>CustomerRegistration.aspx</DependentUpon>
+    </Compile>  
     <Compile Include="forgot-password.aspx.cs">
       <DependentUpon>forgot-password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -89,6 +98,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MerchantRegistration.aspx.cs">
+      <DependentUpon>MerchantRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MerchantRegistration.aspx.designer.cs">
+      <DependentUpon>MerchantRegistration.aspx</DependentUpon>
     </Compile>
     <Compile Include="MerchantStoreDescription.aspx.cs">
       <DependentUpon>MerchantStoreDescription.aspx</DependentUpon>
