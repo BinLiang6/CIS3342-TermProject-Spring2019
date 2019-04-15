@@ -68,25 +68,36 @@ namespace TermProject
                         if(result == -1)
                         {
                             lblNotif.Text = "An error occurred. Please try again!";
+                            lblNotif.Visible = false;
                         }
                         else
                         {
-                            lblNotif.Text = "Successfully created an account";
-                        }
+                            lblSuccess.Text = "Successfully created an account";                                                      
+                            if(lblNotif.Visible == true)
+                            {
+                                lblNotif.Visible = false;
+                            }
+
+                            lblSuccess.Visible = true;
+                            btnReturnLogin.Visible = true;
+                            btnSubmit.Visible = false;
+                        }          
                     }
                     catch (Exception ex)
                     {
                         throw ex;
                     }
-                }
-                
+                }             
             }
             else
             {
                 lblNotif.Text = "The username and email are taken";
+                lblNotif.Visible = true;
             }
-            
-
+        }
+        protected void btnReturnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
         }
     }
 }

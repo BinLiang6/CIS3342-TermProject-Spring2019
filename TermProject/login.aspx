@@ -26,7 +26,7 @@
                         <h2 class="card-title mb-4 mt-1">Sign in</h2>
                         <div class="form-group">
                             <label><b>Username</b></label>
-                            <asp:TextBox ID="txtUsername" class="form-control" runat="server" placeholder="username" type="text" />
+                            <asp:TextBox ID="txtUsername" class="form-control" runat="server" placeholder="Username" type="text" />
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
@@ -53,7 +53,7 @@
                         <hr />
                         <div class="form-group">
                             <p style="text-align: center;">-- New to Amazon? --</p>
-                            <a href="#" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
+                            <a href="CustomerRegistration.aspx#" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
                         </div>
                     </article>
                 </div>
