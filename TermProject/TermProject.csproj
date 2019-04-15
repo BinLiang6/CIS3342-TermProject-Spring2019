@@ -68,6 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomerRegistration.aspx" />
+    <Content Include="bootstrap-style.css" />
+    <Content Include="forgot-password.aspx" />
+    <Content Include="img\amazon.jpg" />
     <Content Include="login.aspx" />
     <Content Include="MerchantRegistration.aspx" />
     <Content Include="MerchantStoreDescription.aspx" />
@@ -81,6 +84,13 @@
     </Compile>
     <Compile Include="CustomerRegistration.aspx.designer.cs">
       <DependentUpon>CustomerRegistration.aspx</DependentUpon>
+    </Compile>  
+    <Compile Include="forgot-password.aspx.cs">
+      <DependentUpon>forgot-password.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forgot-password.aspx.designer.cs">
+      <DependentUpon>forgot-password.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -131,6 +141,7 @@
       <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
