@@ -11,7 +11,8 @@ namespace Utilities
     public class DBConnect
     {
         //String SqlConnectString = "server=cis-mssql1.temple.edu;Database=sp19_3342_tug13955;User id=tug13955;Password=uRei7aiWek";
-        String SqlConnectString = "server=cis-mssql1.temple.edu;Database=sp19_3342_tug13955;User id=tug13955;Password=uRei7aiWek";
+        //String SqlConnectString = "server=cis-mssql1.temple.edu;Database=sp19_3342_tug13955;User id=tug13955;Password=uRei7aiWek";
+        String SqlConnectString = "server=127.0.0.1,5555;Database=sp19_3342_tug13955;User id=tug13955;Password=uRei7aiWek";
         SqlConnection myConnectionSql;
         SqlCommand objCmd;
         SqlDataReader objDataReader;
