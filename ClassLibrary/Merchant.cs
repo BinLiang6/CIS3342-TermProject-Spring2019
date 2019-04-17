@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ClassLibrary
 {
-    public class Merchant: ContactInformation
+    public class Merchant: Customer
     {
         private String apikey;
         private String seller_site;
