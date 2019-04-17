@@ -98,7 +98,11 @@ namespace TermProjectWS.Controllers
                     objCommand.Parameters.AddWithValue("@theDesc", merchant.Desc);
                     objCommand.Parameters.AddWithValue("@theEmail", merchant.Email);
                     objCommand.Parameters.AddWithValue("@thePhone", merchant.Phone);
-
+                    objCommand.Parameters.AddWithValue("@theUrl", merchant.Url);
+                    objCommand.Parameters.AddWithValue("@theAddress", merchant.Address);
+                    objCommand.Parameters.AddWithValue("@theCity", merchant.City);
+                    objCommand.Parameters.AddWithValue("@theState", merchant.State);
+                    objCommand.Parameters.AddWithValue("@theZipcode", merchant.ZipCode);
                     int returnValue = objDB.DoUpdateUsingCmdObj(objCommand);
 
                     if (returnValue > 0)

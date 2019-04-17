@@ -5,13 +5,12 @@ using System.Web;
 
 namespace ClassLibrary
 {
-    public class Merchant
+    public class Merchant: ContactInformation
     {
         private String apikey;
         private String seller_site;
         private String desc;
-        private String email;
-        private String phone;
+        private String url;
 
         public Merchant()
         {
@@ -35,16 +34,12 @@ namespace ClassLibrary
             get { return desc; }
         }
 
-        public String Email
+        public String Url
         {
-            set { this.email = value; }
-            get { return email; }
+            set { this.url = value; }
+            get { return url; }
         }
 
-        public String Phone
-        {
-            set { this.phone = value; }
-            get { return phone; }
-        }
+       
     }
 }
