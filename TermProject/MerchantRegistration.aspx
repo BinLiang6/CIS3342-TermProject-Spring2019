@@ -28,8 +28,22 @@
                             <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
                         </p>
                         <p>
-                            <asp:TextBox ID="txtUsername" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtName" class="form-control" runat="server"></asp:TextBox>
                         </p>
+
+                        <p>
+                            <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                         <p>
+                            <asp:Label ID="Label10" runat="server" Text="Password"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtPassword" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                        
                         <p>
                             <asp:Label ID="Label2" runat="server" Text="Description"></asp:Label>
                         </p>
@@ -42,6 +56,7 @@
                         <p>
                             <asp:TextBox ID="txtUrl" class="form-control" runat="server"></asp:TextBox>
                         </p>
+                        
                         <p>
                             <asp:Label ID="Label5" runat="server" Text="Address"></asp:Label>
                         </p>
@@ -66,18 +81,15 @@
                         <p>
                             <asp:TextBox ID="txtZipcode" class="form-control" runat="server"></asp:TextBox>
                         </p>
-                        <p>
-                            <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
-                        </p>
+                        
                         <p>
                             <asp:Label ID="Label4" runat="server" Text="Phone"></asp:Label>
                         </p>
                         <p>
                             <asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
                         </p>
+                        <asp:Label ID="lblSuccess" class=" alert alert-success btn-block" runat="server" Text="Label" Visible="False"></asp:Label>
+
                         <p>
                             <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
                         </p>

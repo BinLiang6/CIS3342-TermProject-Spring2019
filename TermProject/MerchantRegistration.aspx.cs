@@ -28,14 +28,15 @@ namespace TermProject
                 url = url + "Register/Merchant/";
                 Merchant merchant = new Merchant();
 
-                merchant.Seller_site = txtUsername.Text;
+                merchant.Seller_site = txtName.Text;
+                merchant.Email = txtEmail.Text;
+                merchant.Password = txtPassword.Text;
                 merchant.Desc = txtDesc.Text;
-                merchant.Url = txtUrl.Text;
+                merchant.Url = txtUrl.Text;               
                 merchant.Address = txtAddress.Text;
                 merchant.City = txtCity.Text;
                 merchant.State = txtState.Text;
-                merchant.ZipCode = Int32.Parse(txtZipcode.Text);
-                merchant.Email = txtEmail.Text;
+                merchant.ZipCode = txtZipcode.Text;
                 merchant.Phone = txtPhone.Text;
 
 
@@ -61,14 +62,21 @@ namespace TermProject
 
                 if (data == "true")
                 {
-                    lblNotify.Text = "Successfully added a merchant!";
+                    if(lblNotify.Visible == true)
+                    {
+                        lblNotify.Visible = false;
+                    }
+
+                    lblSuccess.Text = "Successfully added a merchant!";
+        
                 }
                 else
                 {
                     lblNotify.Text = "An error occurred! The username is already exists!";
+                    lblNotify.Visible = true;
                 }
 
-                lblNotify.Visible = true;
+                
             }
             catch (Exception ex)
             {
