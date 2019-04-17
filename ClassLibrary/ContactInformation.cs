@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class ContactInformation
+    public class ContactInformation : Customer
     {
         private String name;
         private String address;
         private String city;
         private String state;
-        private int zipCode;
+        private String zipCode;
         private String email;
         private String phoneNumber;
 
@@ -45,7 +45,7 @@ namespace ClassLibrary
             set { state = value; }
         }
 
-        public int ZipCode
+        public String ZipCode
         {
             get { return zipCode; }
             set { zipCode = value; }

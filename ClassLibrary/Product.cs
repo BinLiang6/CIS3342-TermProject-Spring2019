@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ClassLibrary
 {
-    public class Product
+    public class Product : Merchant
     {
         private int product_id;
         private String title;
@@ -14,7 +14,6 @@ namespace ClassLibrary
         private int quantity;
         private String image;
         private int department_id;
-        private String apikey;
 
         public Product()
         {
