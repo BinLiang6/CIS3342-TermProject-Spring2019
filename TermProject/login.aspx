@@ -55,6 +55,10 @@
                             <p style="text-align: center;">-- New to Amazon? --</p>
                             <a href="CustomerRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
                         </div>
+
+                        <div class="form-group">                     
+                            <a href="MerchantRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Register Merchant</a>
+                        </div>
                     </article>
                 </div>
                 <!-- card.// -->

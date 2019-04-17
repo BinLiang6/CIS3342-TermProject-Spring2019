@@ -11,6 +11,7 @@ namespace ClassLibrary
         private String seller_site;
         private String desc;
         private String url;
+        private String password;
 
         public Merchant()
         {
@@ -40,6 +41,11 @@ namespace ClassLibrary
             get { return url; }
         }
 
-       
+        public String Password
+        {
+            set { this.password = value; }
+            get { return password; }
+        }
+
     }
 }

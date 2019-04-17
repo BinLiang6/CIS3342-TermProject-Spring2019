@@ -37,6 +37,36 @@
                             <asp:TextBox ID="txtDesc" class="form-control" runat="server"></asp:TextBox>
                         </p>
                         <p>
+                            <asp:Label ID="Label9" runat="server" Text="URL"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtUrl" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                        <p>
+                            <asp:Label ID="Label5" runat="server" Text="Address"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtAddress" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                        <p>
+                            <asp:Label ID="Label6" runat="server" Text="City"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtCity" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                        <p>
+                            <asp:Label ID="Label7" runat="server" Text="State"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtState" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                        <p>
+                            <asp:Label ID="Label8" runat="server" Text="Zipcode"></asp:Label>
+                        </p>
+                        <p>
+                            <asp:TextBox ID="txtZipcode" class="form-control" runat="server"></asp:TextBox>
+                        </p>
+                        <p>
                             <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
                         </p>
                         <p>

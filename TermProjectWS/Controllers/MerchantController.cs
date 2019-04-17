@@ -103,6 +103,8 @@ namespace TermProjectWS.Controllers
                     objCommand.Parameters.AddWithValue("@theCity", merchant.City);
                     objCommand.Parameters.AddWithValue("@theState", merchant.State);
                     objCommand.Parameters.AddWithValue("@theZipcode", merchant.ZipCode);
+                    objCommand.Parameters.AddWithValue("@thePassword", merchant.Password);
+
                     int returnValue = objDB.DoUpdateUsingCmdObj(objCommand);
 
                     if (returnValue > 0)
@@ -158,7 +160,7 @@ namespace TermProjectWS.Controllers
                 objCommand.Parameters.AddWithValue("@theAddress", order.Address);
                 objCommand.Parameters.AddWithValue("@thePhone", order.Phone);
                 objCommand.Parameters.AddWithValue("@theEmail", order.Email);
-
+                
                 int returnValue = objDB.DoUpdateUsingCmdObj(objCommand);
 
                 if (returnValue > 0)
