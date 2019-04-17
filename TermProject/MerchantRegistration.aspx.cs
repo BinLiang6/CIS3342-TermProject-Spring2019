@@ -30,8 +30,14 @@ namespace TermProject
 
                 merchant.Seller_site = txtUsername.Text;
                 merchant.Desc = txtDesc.Text;
+                merchant.Url = txtUrl.Text;
+                merchant.Address = txtAddress.Text;
+                merchant.City = txtCity.Text;
+                merchant.State = txtState.Text;
+                merchant.ZipCode = Int32.Parse(txtZipcode.Text);
                 merchant.Email = txtEmail.Text;
                 merchant.Phone = txtPhone.Text;
+
 
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 string jsonMerchant = js.Serialize(merchant);
