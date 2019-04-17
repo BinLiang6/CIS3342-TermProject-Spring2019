@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class Customer
+    public class Customer : ContactInformation
     {
         private String customer_id;
         private String username;
