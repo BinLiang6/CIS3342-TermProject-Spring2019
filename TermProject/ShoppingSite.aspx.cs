@@ -18,15 +18,22 @@ namespace TermProject
         SqlCommand objcomm = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-            objcomm.CommandType = CommandType.StoredProcedure;
-            objcomm.CommandText = "TP_GetDepartments";
+            if (Session["username"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+            else
+            {
+                objcomm.CommandType = CommandType.StoredProcedure;
+                objcomm.CommandText = "TP_GetDepartments";
 
-            ddlDepartment.DataSource = objdb.GetDataSetUsingCmdObj(objcomm);
-            ddlDepartment.DataTextField = "name";
-            ddlDepartment.DataValueField = "department_id";
+                ddlDepartment.DataSource = objdb.GetDataSetUsingCmdObj(objcomm);
+                ddlDepartment.DataTextField = "name";
+                ddlDepartment.DataValueField = "department_id";
 
-            ddlDepartment.DataBind();
+                ddlDepartment.DataBind();
 
+            }
 
         }
     }

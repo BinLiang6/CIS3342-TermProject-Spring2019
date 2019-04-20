@@ -22,7 +22,7 @@ namespace TermProject
 
         protected void btnContinue_Click(object sender, EventArgs e)
         {
-            Session.Add("username", "");
+            Session.Add("retrieve-username", "");
             Session.Add("answer1", "");
             Session.Add("answer2", "");
             Session.Add("answer3", "");
@@ -50,7 +50,7 @@ namespace TermProject
                     Session["answer1"] = myDataSet.Tables[0].Rows[0]["sq1"].ToString();
                     Session["answer2"] = myDataSet.Tables[0].Rows[0]["sq2"].ToString();
                     Session["answer3"] = myDataSet.Tables[0].Rows[0]["sq3"].ToString();
-                    Session["username"] = myDataSet.Tables[0].Rows[0]["username"].ToString();
+                    Session["retrieve-username"] = myDataSet.Tables[0].Rows[0]["username"].ToString();
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace TermProject
                 objCommand.CommandType = CommandType.StoredProcedure;
                 objCommand.CommandText = "TP_ResetPassword";
                 objCommand.Parameters.AddWithValue("@thePassword", password);
-                objCommand.Parameters.AddWithValue("@theUsername", Session["username"].ToString());
+                objCommand.Parameters.AddWithValue("@theUsername", Session["retrieve-username"].ToString());
                 objDB.DoUpdateUsingCmdObj(objCommand);
 
                 lblSuccess.Visible = true;

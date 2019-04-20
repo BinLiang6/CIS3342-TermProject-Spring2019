@@ -22,6 +22,8 @@ namespace TermProject
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            Session.Add("username", "");
+
             String username = txtUsername.Text;
             String password = txtPassword.Text;
             
@@ -49,8 +51,9 @@ namespace TermProject
                 {
                     lblDisplay.Text = "";
                     lblSuccess.Text = "Sign in successfully! Welcome back <b>" + myDataSet.Tables[0].Rows[0]["name"].ToString() + "</b>"; //Give the first table that found in the dataset
+                    Session["username"] = username;
                     lblSuccess.Visible = true;
-                    Response.AddHeader("REFRESH", "3;URL=Test.aspx");
+                    Response.AddHeader("REFRESH", "3;URL=ShoppingSite.aspx");
                 }
                 catch
                 {
