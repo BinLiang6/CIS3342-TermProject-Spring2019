@@ -99,7 +99,6 @@ namespace TermProject
                 count = (int)ViewState["count"] + 1;
             }
             
-
             lbCart.Text = ViewState["cart"].ToString() + " (" + count.ToString() + ")";
             ViewState["count"] = count;
 
@@ -143,6 +142,12 @@ namespace TermProject
         protected void lbCart_Click(object sender, EventArgs e)
         {
             Response.Redirect("Cart.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("login.aspx");
         }
     }
 }
