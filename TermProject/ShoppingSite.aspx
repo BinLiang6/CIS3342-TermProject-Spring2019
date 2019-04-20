@@ -13,21 +13,20 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Amazon</title>
     <style type="text/css">
-        #form1 {
-            height: 751px;
+        #frmShopping {
+            height: 750px;
         }
     </style>
 </head>
 <body style="padding: 5px;">
-    <form id="form1" runat="server">
+    <form id="frmShopping" runat="server">
         <div>
-
-            
             <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlDepartment_SelectedIndexChanged">
             </asp:DropDownList>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbCart" runat="server" ><span class="glyphicon glyphicon-shopping-cart"></span>Cart</asp:LinkButton>
+            <asp:LinkButton ID="lbCart" runat="server"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</asp:LinkButton>
+            <asp:Button ID="btnLogout" class="float-right" runat="server" Text="Sign Out" OnClick="btnLogout_Click" />
             <br />
             <br />
             <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="gvProducts_SelectedIndexChanged">
@@ -37,12 +36,12 @@
                     <asp:BoundField DataField="desc" HeaderText="Description" />
                     <asp:BoundField DataField="price" HeaderText="Price" />
                     <asp:TemplateField HeaderText="Quantity">
-                         <ItemTemplate>
-                        <asp:TextBox ID="txtQuantity" runat="server"  type="number" />
-                        
-                    </ItemTemplate>
+                        <ItemTemplate>
+                            <asp:TextBox ID="txtQuantity" runat="server" type="number" />
+
+                        </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true"/>
+                    <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true" />
                 </Columns>
             </asp:GridView>
 
