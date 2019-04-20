@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
+    [Serializable()]
     public class Customer : ContactInformation
     {
         private String customer_id;

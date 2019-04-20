@@ -34,7 +34,7 @@ namespace TermProject
 
             if(ds.Tables[0].Rows.Count == 0)
             {
-                ContactInformation customer = new ContactInformation();
+                Customer customer = new Customer();
                 customer.Name = txtName.Text;
                 customer.Username = txtUsername.Text;
                 customer.Password = txtPassword.Text;
