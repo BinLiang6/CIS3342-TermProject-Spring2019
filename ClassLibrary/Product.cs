@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ClassLibrary
 {
+    [Serializable()]
     public class Product : Merchant
     {
         private int product_id;
