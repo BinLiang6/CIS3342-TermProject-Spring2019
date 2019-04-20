@@ -20,6 +20,13 @@ namespace ClassLibrary
         {
         }
 
+        public double TotalCost(double price, int quantity)
+        {
+            double totalCost = 0.0;
+            totalCost = price * quantity;
+            return totalCost;
+        }
+
         public int Product_ID
         {
             set { this.product_id = value; }

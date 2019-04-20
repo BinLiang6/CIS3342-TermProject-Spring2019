@@ -10,13 +10,15 @@ using System.IO;
 using System.Net;
 using Utilities;
 using ClassLibrary;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace TermProject
 {
     public partial class ShoppingSite : System.Web.UI.Page
     {
-        // DBConnect objdb = new DBConnect();
-        // SqlCommand objcomm = new SqlCommand();
+        DBConnect objdb = new DBConnect();
+        SqlCommand objcomm = new SqlCommand();
         int count = 1 ;
         ArrayList productlist = new ArrayList();
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
@@ -47,7 +49,19 @@ namespace TermProject
                 ddlDepartment.DataBind();
 
                 ViewState["cart"] = lbCart.Text;
+
+                DisplayProduct();
             }
+            
+        public void DisplayProduct()
+        {
+            objcomm.CommandType = CommandType.StoredProcedure;
+            objcomm.CommandText = "TP_GetAllProducts";
+
+            DataSet ds = objdb.GetDataSetUsingCmdObj(objcomm);
+
+            gvProducts.DataSource = ds;
+            gvProducts.DataBind();
         }
 
         protected void ddlDepartment_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,7 +126,21 @@ namespace TermProject
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnViewCart_Click(object sender, EventArgs e)
+        {
+            if (Session["Productlist"] != null)
+            {
+                Response.Redirect("Cart.aspx");
+            }
+            else
+            {
+                lblNotify.Text = "Your cart is empty!";
+                lblNotify.Visible = true;
+            }
+            
+        }
+
+        protected void lbCart_Click(object sender, EventArgs e)
         {
             Response.Redirect("Cart.aspx");
         }

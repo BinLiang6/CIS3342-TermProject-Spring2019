@@ -16,51 +16,72 @@ namespace TermProject
 {
     public partial class Cart : System.Web.UI.Page
     {
+        ArrayList productlist = new ArrayList();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                ArrayList productlist = (ArrayList) Session["Productlist"];
-
-                gvCart.DataSource = productlist;
-                gvCart.DataBind();
+                showCart(ShowTotalPrice());             
             }
         }
-        public void showCart()
+
+        //Display the all of the product in the cart and the toal cost
+        public void showCart(double totalcost)
         {
-            ArrayList productlist = (ArrayList)Session["Productlist"];
+            gvCart.Columns[0].FooterText = "Total";
+            gvCart.Columns[4].FooterText = totalcost.ToString("C2");
+            productlist = (ArrayList)Session["Productlist"];
             gvCart.DataSource = productlist;
             gvCart.DataBind();
         }
+
+        //Calculate the total cost of the cart
+        public double ShowTotalPrice()
+        {
+            productlist = (ArrayList)Session["Productlist"];
+            double total = 0.0;
+            foreach (Product p in productlist)
+            {
+                double price = p.Price;
+                int quantity = p.Quantity;
+                total += p.TotalCost(p.Price, p.Quantity);
+            }
+
+            return total;
+        }
+
+        //Edit the selecting row
         protected void gvCart_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvCart.EditIndex = e.NewEditIndex;
 
-            showCart();
+            showCart(ShowTotalPrice());
         }
 
+        //Canceling the edit row
         protected void gvCart_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvCart.EditIndex = -1;
 
-            showCart();
+            showCart(ShowTotalPrice());
         }
 
+        //Update the selected row
         protected void gvCart_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             int rowIndex = e.RowIndex;
-            ArrayList productlist = (ArrayList)Session["Productlist"];
+            productlist = (ArrayList)Session["Productlist"];
 
             Product product = (Product)productlist[rowIndex];
 
             TextBox TBox;
-            TBox = (TextBox)gvCart.Rows[rowIndex].Cells[4].Controls[0];
+            TBox = (TextBox)gvCart.Rows[rowIndex].Cells[3].Controls[0];
             int quantity = Int32.Parse(TBox.Text);
             product.Quantity = quantity;
 
             Session["ProductList"] = productlist;
             gvCart.EditIndex = -1;
-            showCart();
+            showCart(ShowTotalPrice());
 
         }
 
@@ -69,16 +90,17 @@ namespace TermProject
             
         }
 
+        //Deleting the selected row
         protected void gvCart_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int row = e.RowIndex;
-            ArrayList productlist = (ArrayList)Session["Productlist"];
+            productlist = (ArrayList)Session["Productlist"];
 
             productlist.RemoveAt(row);
 
             Session["ProductList"] = productlist;
 
-            showCart();
+            showCart(ShowTotalPrice());
         }
     }
 }
