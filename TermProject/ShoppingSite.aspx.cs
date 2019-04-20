@@ -52,6 +52,7 @@ namespace TermProject
 
                 DisplayProduct();
             }
+        }
             
         public void DisplayProduct()
         {
