@@ -23,8 +23,12 @@ namespace TermProject
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
             //url = url + "GetDepartments/";
-            if (!IsPostBack)
+            else if (!IsPostBack)
             {
                 WebRequest request = WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
@@ -45,8 +49,6 @@ namespace TermProject
 
                 ViewState["cart"] = lbCart.Text;
             }
-
-
         }
 
         protected void ddlDepartment_SelectedIndexChanged(object sender, EventArgs e)

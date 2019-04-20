@@ -66,7 +66,7 @@ namespace TermProject
                     {
                         lblNotify.Visible = false;
                     }
-
+                    lblSuccess.Visible = true;
                     lblSuccess.Text = "Successfully added a merchant!";
         
                 }
