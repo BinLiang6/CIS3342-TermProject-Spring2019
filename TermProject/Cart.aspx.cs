@@ -66,13 +66,18 @@ namespace TermProject
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
-            ArrayList arr = (ArrayList)Session["Productlist"];
-            GridView1.DataSource = arr;
-            GridView1.DataBind();
+            
         }
 
         protected void gvCart_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            int row = e.RowIndex;
+            ArrayList productlist = (ArrayList)Session["Productlist"];
+
+            productlist.RemoveAt(row);
+
+            Session["ProductList"] = productlist;
+
             showCart();
         }
     }

@@ -24,8 +24,6 @@
             <br />
             <asp:Button ID="btnCheckout" runat="server" OnClick="btnCheckout_Click" Text="Continue to Checkout" />
             <br />
-            <asp:GridView ID="GridView1" runat="server">
-            </asp:GridView>
         </div>
     </form>
 </body>
