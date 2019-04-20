@@ -5,6 +5,7 @@ using System.Web;
 
 namespace ClassLibrary
 {
+    [Serializable()]
     public class Merchant: Customer
     {
         private String apikey;
