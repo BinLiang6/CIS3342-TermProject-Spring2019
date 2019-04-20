@@ -96,6 +96,8 @@
                         <p>
                             <asp:Button ID="btnAddMerchant" class="btn btn-warning btn-block" Style="border: 1px solid grey;" runat="server" OnClick="btnAddMerchant_Click" Text="Create your Amazon merchant account" />
                         </p>
+                        <hr />
+                        <a href="login.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Go back to Sign in</a>
 
                     </article>
                 </div>

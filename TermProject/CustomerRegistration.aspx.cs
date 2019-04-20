@@ -79,7 +79,6 @@ namespace TermProject
                             }
 
                             lblSuccess.Visible = true;
-                            btnReturnLogin.Visible = true;
                             btnSubmit.Visible = false;
                         }          
                     }
@@ -94,10 +93,6 @@ namespace TermProject
                 lblNotif.Text = "The username and email are taken";
                 lblNotif.Visible = true;
             }
-        }
-        protected void btnReturnLogin_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("login.aspx");
         }
     }
 }

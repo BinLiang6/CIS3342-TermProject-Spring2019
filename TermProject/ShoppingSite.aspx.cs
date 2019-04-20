@@ -11,12 +11,11 @@ using System.Net;
 using Utilities;
 using ClassLibrary;
 
-
 namespace TermProject
 {
     public partial class ShoppingSite : System.Web.UI.Page
     {
-        //DBConnect objdb = new DBConnect();
+        // DBConnect objdb = new DBConnect();
         // SqlCommand objcomm = new SqlCommand();
         int count = 1 ;
         ArrayList productlist = new ArrayList();
@@ -27,7 +26,7 @@ namespace TermProject
             {
                 Response.Redirect("login.aspx");
             }
-            //url = url + "GetDepartments/";
+            // url = url + "GetDepartments/";
             else if (!IsPostBack)
             {
                 WebRequest request = WebRequest.Create(url);
