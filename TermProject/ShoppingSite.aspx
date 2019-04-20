@@ -20,14 +20,18 @@
 </head>
 <body style="padding: 5px;">
     <form id="form1" runat="server">
+        <br />
+            <div class="d-flex justify-content-center">
+            <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
+            </div>
+        <br />
         <div>
 
-            
             <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlDepartment_SelectedIndexChanged">
             </asp:DropDownList>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbCart" runat="server" ><span class="glyphicon glyphicon-shopping-cart"></span>Cart</asp:LinkButton>
+            <asp:LinkButton ID="lbCart" runat="server" OnClick="lbCart_Click" ><span class="glyphicon glyphicon-shopping-cart"></span>Cart</asp:LinkButton>
             <br />
             <br />
             <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="gvProducts_SelectedIndexChanged">
@@ -45,9 +49,13 @@
                     <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true"/>
                 </Columns>
             </asp:GridView>
+            <br />
+                <p>
+                   <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
+                </p>
 
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="View Cart" />
+            <asp:Button ID="Button1" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnViewCart_Click" Text="View Cart" />
 
             <br />
             <br />
