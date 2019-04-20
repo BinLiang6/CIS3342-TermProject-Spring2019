@@ -13,7 +13,6 @@ using ClassLibrary;
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace TermProject
 {
     public partial class ShoppingSite : System.Web.UI.Page
@@ -25,8 +24,12 @@ namespace TermProject
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (!IsPostBack)
+            if (Session["username"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
+            // url = url + "GetDepartments/";
+            else if (!IsPostBack)
             {
                 WebRequest request = WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
@@ -49,8 +52,7 @@ namespace TermProject
 
                 DisplayProduct();
             }
-        }
-
+            
         public void DisplayProduct()
         {
             objcomm.CommandType = CommandType.StoredProcedure;

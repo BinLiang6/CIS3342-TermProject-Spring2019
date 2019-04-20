@@ -26,7 +26,14 @@
                                 <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Sign in successfully!" Visible="false" ></asp:Label>
                         <h2 class="card-title mb-4 mt-1">Sign in</h2>
                         <div class="form-group">
-                            <label><b>Username</b></label>
+                            <label><b>Account type</b></label>
+                                <asp:DropDownList ID="ddlLogin" runat="server" class="form-control col-4">
+                                    <asp:ListItem Value="customer" Selected="True">Customer</asp:ListItem>
+                                    <asp:ListItem Value="merchant">Merchant</asp:ListItem>
+                                </asp:DropDownList>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Username (Email for Merchant account)</b></label>
                             <asp:TextBox ID="txtUsername" class="form-control" runat="server" placeholder="Username" type="text" />
                         </div>
                         <!-- form-group// -->
@@ -55,9 +62,10 @@
                             <p style="text-align: center;">-- New to Amazon? --</p>
                             <a href="CustomerRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
                         </div>
-
-                        <div class="form-group">                     
-                            <a href="MerchantRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Register Merchant</a>
+                        <hr />
+                        <div class="form-group">    
+                            <p style="text-align: center;">-- Want to sell your products on Amazon? --</p>                 
+                            <a href="MerchantRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Register to become a Merchant</a>
                         </div>
                     </article>
                 </div>

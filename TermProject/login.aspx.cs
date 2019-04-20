@@ -17,46 +17,59 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+         
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            Session.Add("username", "");
+            Session.Add("accountType", "");
+
             String username = txtUsername.Text;
             String password = txtPassword.Text;
+            String accountType = ddlLogin.SelectedValue.ToString();
             
-            if (username == "")
+            if (accountType == "customer")
             {
-                txtUsername.Focus();
-                lblDisplay.Text = "Please enter your username";
-            }
-            else if (password == "")
-            {
-                txtPassword.Focus();
-                lblDisplay.Text = "Please enter your password";
-            }
-            else
-            {
-                // Set the SQLCommand object's properties for executing a Stored Procedure
-                objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "TP_GetLogIn";
-                objCommand.Parameters.AddWithValue("@theUsername", username);
-                objCommand.Parameters.AddWithValue("@thePassword", password);
-                // Execute the stored procedure using the DBConnect object and the SQLCommand object
-                DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
-
-                try
+                if (username == "")
                 {
-                    lblDisplay.Text = "";
-                    lblSuccess.Text = "Sign in successfully! Welcome back <b>" + myDataSet.Tables[0].Rows[0]["name"].ToString() + "</b>"; //Give the first table that found in the dataset
-                    lblSuccess.Visible = true;
-                    Response.AddHeader("REFRESH", "3;URL=Test.aspx");
+                    txtUsername.Focus();
+                    lblDisplay.Text = "Please enter your username";
                 }
-                catch
+                else if (password == "")
                 {
-                    lblDisplay.Text = "Incorrect username OR password";
                     txtPassword.Focus();
+                    lblDisplay.Text = "Please enter your password";
                 }
+                else
+                {
+                    // Set the SQLCommand object's properties for executing a Stored Procedure
+                    objCommand.CommandType = CommandType.StoredProcedure;
+                    objCommand.CommandText = "TP_GetLogIn";
+                    objCommand.Parameters.AddWithValue("@theUsername", username);
+                    objCommand.Parameters.AddWithValue("@thePassword", password);
+                    // Execute the stored procedure using the DBConnect object and the SQLCommand object
+                    DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+
+                    try
+                    {
+                        lblDisplay.Text = "";
+                        lblSuccess.Text = "Sign in successfully! Welcome back <b>" + myDataSet.Tables[0].Rows[0]["name"].ToString() + "</b>"; //Give the first table that found in the dataset
+                        Session["username"] = username;
+                        Session["accountType"] = accountType;
+                        lblSuccess.Visible = true;
+                        Response.AddHeader("REFRESH", "3;URL=ShoppingSite.aspx");
+                    }
+                    catch
+                    {
+                        lblDisplay.Text = "Incorrect username OR password";
+                        txtPassword.Focus();
+                    }
+                }
+            }
+            else if (accountType == "merchant")
+            {
+
             }
         }
     }
