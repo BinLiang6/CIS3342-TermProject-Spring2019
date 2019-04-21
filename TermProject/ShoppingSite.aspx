@@ -33,7 +33,7 @@
             </asp:DropDownList>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:LinkButton ID="lbCart" runat="server"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</asp:LinkButton>
+            
             <asp:Button ID="btnLogout" class="float-right" runat="server" Text="Sign Out" OnClick="btnLogout_Click" />
             <asp:LinkButton ID="lbCart" runat="server" OnClick="lbCart_Click" ><span class="glyphicon glyphicon-shopping-cart"></span>Cart</asp:LinkButton>
           

@@ -40,15 +40,6 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.Button btnGetProduct;
         
         /// <summary>
-        /// lbCart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbCart;
-        
-        /// <summary>
         /// btnLogout control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,15 @@ namespace TermProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogout;
+        
+        /// <summary>
+        /// lbCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbCart;
         
         /// <summary>
         /// gvProducts control.
