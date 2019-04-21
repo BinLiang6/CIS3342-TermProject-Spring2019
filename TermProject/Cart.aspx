@@ -20,7 +20,7 @@
         <div>
             <h3 style="text-align: center;">Your Shopping Cart</h3>
             <asp:Label ID="lblSuccess" class="alert alert-success btn-block" runat="server" Text="Placed order successfully!" Visible="false"></asp:Label>
-            <asp:Label ID="lblDisplay" style="align-content:center;" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+            <asp:Label ID="lblDisplay" style="align-content: center;" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
             <asp:GridView ID="gvCart" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gvCart_RowCancelingEdit" OnRowEditing="gvCart_RowEditing" OnRowUpdating="gvCart_RowUpdating" OnRowDeleting="gvCart_RowDeleting" ShowFooter="True" Width="100%">
                 <Columns>
                     <asp:BoundField DataField="Image" ReadOnly="True" />
@@ -30,7 +30,6 @@
                     <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" />
                     <asp:CommandField ButtonType="Button" HeaderText="Edit" ShowEditButton="True" />
                     <asp:CommandField ButtonType="Button" EditText="" HeaderText="Delete" ShowDeleteButton="True" />
-                    <asp:BoundField DataField="Product ID" HeaderText="Product ID" ReadOnly="True" />
                 </Columns>
             </asp:GridView>
             <br />
