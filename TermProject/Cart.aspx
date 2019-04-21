@@ -11,14 +11,16 @@
     <title></title>
 </head>
 <body style="padding: 5px;">
-    <form id="form1" runat="server">
+    <form id="frmCart" runat="server">
         <br />
             <div class="d-flex justify-content-center">
             <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
             </div>
         <br />
         <div>
-            <br />
+            <h3 style="text-align: center;">Your Shopping Cart</h3>
+            <asp:Label ID="lblSuccess" class="alert alert-success btn-block" runat="server" Text="Placed order successfully!" Visible="false"></asp:Label>
+            <asp:Label ID="lblDisplay" style="align-content:center;" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
             <asp:GridView ID="gvCart" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gvCart_RowCancelingEdit" OnRowEditing="gvCart_RowEditing" OnRowUpdating="gvCart_RowUpdating" OnRowDeleting="gvCart_RowDeleting" ShowFooter="True" Width="100%">
                 <Columns>
                     <asp:BoundField DataField="Image" ReadOnly="True" />
@@ -28,11 +30,11 @@
                     <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" />
                     <asp:CommandField ButtonType="Button" HeaderText="Edit" ShowEditButton="True" />
                     <asp:CommandField ButtonType="Button" EditText="" HeaderText="Delete" ShowDeleteButton="True" />
+                    <asp:BoundField DataField="Product ID" HeaderText="Product ID" ReadOnly="True" />
                 </Columns>
             </asp:GridView>
             <br />
             <asp:Button ID="btnCheckout" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnCheckout_Click" Text="Continue to Checkout" />
-            <br />
         </div>
     </form>
 </body>
