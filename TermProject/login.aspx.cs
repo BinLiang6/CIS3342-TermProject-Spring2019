@@ -22,6 +22,7 @@ namespace TermProject
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            Session.Add("customerID", "");
             Session.Add("username", "");
             Session.Add("email", "");
             Session.Add("password", "");
@@ -57,6 +58,7 @@ namespace TermProject
                     {
                         lblDisplay.Text = "";
                         lblSuccess.Text = "Sign in successfully! Welcome back <b>" + CustomerDS.Tables[0].Rows[0]["name"].ToString() + "</b>"; //Give the first table that found in the dataset
+                        Session["customerID"] = CustomerDS.Tables[0].Rows[0]["customer_id"].ToString();
                         Session["username"] = username;
                         Session["accountType"] = accountType;
                         Session["password"] = password;

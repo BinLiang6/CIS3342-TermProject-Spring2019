@@ -90,53 +90,53 @@ namespace TermProject
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
             Product product = new Product();
+            // Serialize a City object into a JSON string
+            JavaScriptSerializer js = new JavaScriptSerializer();
 
             for (int row = 0; row < gvCart.Rows.Count; row++)
             {
                 product.Quantity = Convert.ToInt32(gvCart.Rows[row].Cells[3].Text);
-                product.Product_ID = ;
-                product.Customer_ID = ;
-            }
+                product.Product_ID = Convert.ToInt32(gvCart.Rows[row].Cells[7].Text); ;
+                product.Customer_ID = Convert.ToInt32(Session["customerID"].ToString());
 
-            // Serialize a City object into a JSON string
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            String jsonCheckout = js.Serialize(product);
+                String jsonCheckout = js.Serialize(product);
 
-            try
-            {
-                // Send the City object to the Web API that will be used to store a new city record in the database.
-                // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
-                WebRequest request = WebRequest.Create(url);
-                request.Method = "POST";
-                request.ContentLength = jsonCheckout.Length;
-                request.ContentType = "application/json";
-
-                // Write the JSON data to the Web Request
-                StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                writer.Write(jsonCheckout);
-                writer.Flush();
-                writer.Close();
-
-                // Read the data from the Web Response, which requires working with streams.
-                WebResponse response = request.GetResponse();
-                Stream theDataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(theDataStream);
-                String data = reader.ReadToEnd();
-                reader.Close();
-                response.Close();
-
-                if (data == "true")
+                try
                 {
-                    lblSuccess.Visible = true;
+                    // Send the City object to the Web API that will be used to store a new city record in the database.
+                    // Setup an HTTP POST Web Request and get the HTTP Web Response from the server.
+                    WebRequest request = WebRequest.Create(url);
+                    request.Method = "POST";
+                    request.ContentLength = jsonCheckout.Length;
+                    request.ContentType = "application/json";
+
+                    // Write the JSON data to the Web Request
+                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                    writer.Write(jsonCheckout);
+                    writer.Flush();
+                    writer.Close();
+
+                    // Read the data from the Web Response, which requires working with streams.
+                    WebResponse response = request.GetResponse();
+                    Stream theDataStream = response.GetResponseStream();
+                    StreamReader reader = new StreamReader(theDataStream);
+                    String data = reader.ReadToEnd();
+                    reader.Close();
+                    response.Close();
+
+                    if (data == "true")
+                    {
+                        lblSuccess.Visible = true;
+                    }
+                    else
+                    {
+                        lblDisplay.Text = "A problem occurred while adding the city to the database. The data wasn't recorded.";
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    lblDisplay.Text = "A problem occurred while adding the city to the database. The data wasn't recorded.";
+                    lblDisplay.Text = "Error: " + ex.Message;
                 }
-            }
-            catch (Exception ex)
-            {
-                lblDisplay.Text = "Error: " + ex.Message;
             }
         }
 
