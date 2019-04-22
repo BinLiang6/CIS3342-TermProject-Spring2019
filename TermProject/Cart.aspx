@@ -34,7 +34,7 @@
                 </Columns>
             </asp:GridView>
             <br />
-            <asp:Button ID="btnCheckout" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnCheckout_Click" Text="Continue to Checkout" />
+            <asp:Button ID="btnPlaceOrder" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnPlaceOrder_Click" Text="Place order" />
         </div>
     </form>
 </body>

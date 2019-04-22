@@ -87,7 +87,7 @@ namespace TermProject
 
         }
 
-        protected void btnCheckout_Click(object sender, EventArgs e)
+        protected void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             Product product = new Product();
             // Serialize a City object into a JSON string
