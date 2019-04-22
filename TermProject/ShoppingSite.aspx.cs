@@ -103,6 +103,7 @@ namespace TermProject
             lbCart.Text = ViewState["cart"].ToString() + " (" + count.ToString() + ")";
             ViewState["count"] = count;
 
+
             Product product = new Product();
             product.Image = gvProducts.SelectedRow.Cells[0].Text;
             product.Title = gvProducts.SelectedRow.Cells[1].Text;
