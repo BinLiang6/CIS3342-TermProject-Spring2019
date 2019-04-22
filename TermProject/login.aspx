@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap-style.css" />
-    <title>Login</title>
+    <title>Amazon - Sign In</title>
 </head>
 <body>
     <form id="frmLogin" runat="server">
@@ -23,14 +23,14 @@
             <div class="col-md-4">
                 <div class="card">
                     <article class="card-body">
-                                <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Sign in successfully!" Visible="false" ></asp:Label>
+                        <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Sign in successfully!" Visible="false"></asp:Label>
                         <h2 class="card-title mb-4 mt-1">Sign in</h2>
                         <div class="form-group">
                             <label><b>Account type</b></label>
-                                <asp:DropDownList ID="ddlLogin" runat="server" class="form-control col-4">
-                                    <asp:ListItem Value="customer" Selected="True">Customer</asp:ListItem>
-                                    <asp:ListItem Value="merchant">Merchant</asp:ListItem>
-                                </asp:DropDownList>
+                            <asp:DropDownList ID="ddlLogin" runat="server" class="form-control col-4">
+                                <asp:ListItem Value="customer" Selected="True">Customer</asp:ListItem>
+                                <asp:ListItem Value="merchant">Merchant</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                         <div class="form-group">
                             <label><b>Username (Email for Merchant account)</b></label>

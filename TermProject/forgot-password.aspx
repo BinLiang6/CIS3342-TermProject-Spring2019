@@ -23,7 +23,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <article class="card-body">
-                        <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Password reseted successfully!" Visible="false" ></asp:Label>
+                        <asp:Label ID="lblSuccess" class="float-right alert alert-success" runat="server" Text="Password reset successful!" Visible="false" ></asp:Label>
                         <h2 class="card-title mb-4 mt-1">Password assistance</h2>
                         <p>Enter the email address associated with your Amazon account and answer the security questions to reset your password.</p>
                         <div id="email" runat="server" visible="true">

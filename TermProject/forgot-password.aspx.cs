@@ -88,6 +88,7 @@ namespace TermProject
             if (txtNewPassword.Text == "")
             {
                 lblPassword.Text = "Please enter your new password";
+                txtNewPassword.Focus();
             }
             else if (txtNewPassword.Text == txtConfirmPassword.Text)
             {

@@ -22,8 +22,10 @@ namespace TermProject
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            Session.Add("customerID", "");
             Session.Add("username", "");
             Session.Add("email", "");
+            Session.Add("password", "");
             Session.Add("accountType", "");
 
             String username = txtUsername.Text;
@@ -56,8 +58,10 @@ namespace TermProject
                     {
                         lblDisplay.Text = "";
                         lblSuccess.Text = "Sign in successfully! Welcome back <b>" + CustomerDS.Tables[0].Rows[0]["name"].ToString() + "</b>"; //Give the first table that found in the dataset
+                        Session["customerID"] = CustomerDS.Tables[0].Rows[0]["customer_id"].ToString();
                         Session["username"] = username;
                         Session["accountType"] = accountType;
+                        Session["password"] = password;
                         lblSuccess.Visible = true;
                         Response.AddHeader("REFRESH", "3;URL=ShoppingSite.aspx");
                     }
@@ -83,6 +87,7 @@ namespace TermProject
                         lblSuccess.Text = "Sign in successfully! Welcome back <b>" + MerchantDS.Tables[0].Rows[0]["seller_site"].ToString() + "</b>"; //Give the first table that found in the dataset
                         Session["email"] = username;
                         Session["accountType"] = accountType;
+                        Session["password"] = password;
                         lblSuccess.Visible = true;
                         Response.AddHeader("REFRESH", "3;URL=MerchantAccount.aspx");
                     }

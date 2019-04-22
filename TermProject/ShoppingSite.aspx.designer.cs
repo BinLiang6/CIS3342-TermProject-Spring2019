@@ -49,6 +49,15 @@ namespace TermProject {
         protected global::System.Web.UI.WebControls.Button btnLogout;
         
         /// <summary>
+        /// btnAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAccount;
+        
+        /// <summary>
         /// lbCart control.
         /// </summary>
         /// <remarks>

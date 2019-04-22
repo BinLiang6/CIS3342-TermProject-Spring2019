@@ -9,7 +9,7 @@ namespace ClassLibrary
     [Serializable()]
     public class Customer : ContactInformation
     {
-        private String customer_id;
+        private int customer_id;
         private String username;
         private String password;
         private String sq1;
@@ -22,7 +22,7 @@ namespace ClassLibrary
 
         }
 
-        public String Customer_ID
+        public int Customer_ID
         {
             get { return customer_id; }
             set { customer_id = value; }

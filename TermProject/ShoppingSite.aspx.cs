@@ -17,11 +17,12 @@ namespace TermProject
 {
     public partial class ShoppingSite : System.Web.UI.Page
     {
-        DBConnect objdb = new DBConnect();
+        DBConnect objDB = new DBConnect();
         SqlCommand objcomm = new SqlCommand();
         int count = 1 ;
         ArrayList productlist = new ArrayList();
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] == null)
@@ -59,8 +60,8 @@ namespace TermProject
             objcomm.CommandType = CommandType.StoredProcedure;
             objcomm.CommandText = "TP_GetAllProducts";
 
-            DataSet ds = objdb.GetDataSetUsingCmdObj(objcomm);
-
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objcomm);
+            
             gvProducts.DataSource = ds;
             gvProducts.DataBind();
         }
@@ -73,7 +74,6 @@ namespace TermProject
         
         protected void btnGetProduct_Click(object sender, EventArgs e)
         {
-
             int departmentnumber = Int32.Parse(ddlDepartment.SelectedValue);
             url = url + "GetProductCatalog/" + departmentnumber.ToString();
 
@@ -88,7 +88,7 @@ namespace TermProject
 
             JavaScriptSerializer js = new JavaScriptSerializer();
             Product[] products = js.Deserialize<Product[]>(data);
-
+            
             gvProducts.DataSource = products;
             gvProducts.DataBind();
         }
@@ -110,7 +110,8 @@ namespace TermProject
             product.Desc = gvProducts.SelectedRow.Cells[2].Text;
             product.Price = Convert.ToDouble(gvProducts.SelectedRow.Cells[3].Text);
             TextBox tb = (TextBox) gvProducts.SelectedRow.FindControl("txtQuantity");
-            
+            product.Product_ID = Convert.ToInt32(gvProducts.SelectedRow.Cells[6].Text);
+
             product.Quantity = Convert.ToInt32(tb.Text);
 
             if(ViewState["Productlist"] != null)
@@ -150,6 +151,11 @@ namespace TermProject
         {
             Session.Clear();
             Response.Redirect("login.aspx");
+        }
+
+        protected void btnAccount_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CustomerAccount.aspx");
         }
     }
 }
