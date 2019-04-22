@@ -24,7 +24,7 @@
                 <!--Account Info-->
                 <div class="form-group">
                     <label><b>Account Information</b></label> 
-                    <asp:GridView ID="gvAccountInfo" runat="server" AutoGenerateColumns="False" Width="100%">
+                    <asp:GridView ID="gvAccountInfo" runat="server" AutoGenerateColumns="False" Width="100%" OnRowEditing="gvAccountInfo_RowEditing" OnRowCancelingEdit="gvAccountInfo_RowCancelingEdit" OnRowUpdating="gvAccountInfo_RowUpdating">
                         <Columns>
                             <asp:BoundField DataField="username" HeaderText="Username" />
                             <asp:BoundField DataField="name" HeaderText="Name" />

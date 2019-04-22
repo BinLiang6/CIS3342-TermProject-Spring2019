@@ -19,13 +19,7 @@ namespace TermProject
         {
             if (!IsPostBack)
             {
-                objCommand.CommandType = CommandType.StoredProcedure;
-                objCommand.CommandText = "TP_GetCustomer_ByUsername";
-                objCommand.Parameters.AddWithValue("@theUsername", Session["username"].ToString());
-                DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
-
-                gvAccountInfo.DataSource = myDataSet;
-                gvAccountInfo.DataBind();
+                ShowAccountInfo();
             }
         }
 
@@ -66,6 +60,53 @@ namespace TermProject
                     lblDisplay.Text = "Passwords do not match. Please enter again";
                 }
             }
+        }
+
+        protected void ShowAccountInfo()
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetCustomer_ByUsername";
+            objCommand.Parameters.AddWithValue("@theUsername", Session["username"].ToString());
+            DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            gvAccountInfo.DataSource = myDataSet;
+            gvAccountInfo.DataBind();
+        }
+
+        protected void gvAccountInfo_RowEditing(Object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
+        {
+            // Set the row to edit-mode in the GridView
+            gvAccountInfo.EditIndex = e.NewEditIndex;
+            ShowAccountInfo();
+        }
+
+        protected void gvAccountInfo_RowCancelingEdit(Object sender, System.Web.UI.WebControls.GridViewCancelEditEventArgs e)
+        {
+            // Set the GridView back to the original state
+            // No rows currently being edited
+            gvAccountInfo.EditIndex = -1;
+            ShowAccountInfo();
+        }
+
+        protected void gvAccountInfo_RowUpdating(Object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
+        {
+            //int rowIndex = e.RowIndex;
+            //int id = int.Parse(gvAccountInfo.Rows[rowIndex].Cells[0].Text);
+            //TextBox TBox;
+            //TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[1].Controls[0];
+            //String name = TBox.Text;
+            //TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[2].Controls[0];
+            //String url = TBox.Text;
+
+            //objCommand.CommandType = CommandType.StoredProcedure;
+            //objCommand.CommandText = "";
+            //objCommand.Parameters.AddWithValue("@theName", name);
+            //objCommand.Parameters.AddWithValue("@theURL", url);
+            //objCommand.Parameters.AddWithValue("@theID", id);
+            //objDB.DoUpdateUsingCmdObj(objCommand);
+
+            gvAccountInfo.EditIndex = -1;
+            ShowAccountInfo();
         }
     }
 }
