@@ -89,14 +89,13 @@ namespace TermProject
 
         protected void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            Product product = new Product();
-            // Serialize a City object into a JSON string
+            //Retrieve the products in the cart
+            productlist = (ArrayList)Session["Productlist"];
             JavaScriptSerializer js = new JavaScriptSerializer();
 
-            for (int row = 0; row < gvCart.Rows.Count; row++)
-            {
-                product.Quantity = Convert.ToInt32(gvCart.Rows[row].Cells[3].Text);
-                product.Product_ID = Convert.ToInt32(gvCart.Rows[row].Cells[7].Text); ;
+            //Adding each product into the database
+            foreach (Product product in productlist)
+            {           
                 product.Customer_ID = Convert.ToInt32(Session["customerID"].ToString());
 
                 String jsonCheckout = js.Serialize(product);

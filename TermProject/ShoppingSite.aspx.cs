@@ -29,7 +29,7 @@ namespace TermProject
             {
                 Response.Redirect("login.aspx");
             }
-            // url = url + "GetDepartments/";
+
             else if (!IsPostBack)
             {
                 WebRequest request = WebRequest.Create(url);
@@ -59,19 +59,15 @@ namespace TermProject
         {
             objcomm.CommandType = CommandType.StoredProcedure;
             objcomm.CommandText = "TP_GetAllProducts";
-
-            DataSet ds = objDB.GetDataSetUsingCmdObj(objcomm);
-            
+            DataSet ds = objDB.GetDataSetUsingCmdObj(objcomm);  
             gvProducts.DataSource = ds;
+
+            String[] productid = new string[1];
+            productid[0] = "product_id";
+            gvProducts.DataKeyNames = productid;
             gvProducts.DataBind();
         }
 
-        protected void ddlDepartment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        
         protected void btnGetProduct_Click(object sender, EventArgs e)
         {
             int departmentnumber = Int32.Parse(ddlDepartment.SelectedValue);
@@ -87,8 +83,8 @@ namespace TermProject
             response.Close();
 
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Product[] products = js.Deserialize<Product[]>(data);
-            
+            List<Product> products = js.Deserialize<List<Product>>(data);
+
             gvProducts.DataSource = products;
             gvProducts.DataBind();
         }
@@ -103,6 +99,7 @@ namespace TermProject
             lbCart.Text = ViewState["cart"].ToString() + " (" + count.ToString() + ")";
             ViewState["count"] = count;
 
+            int rowIndex = gvProducts.SelectedIndex;
 
             Product product = new Product();
             product.Image = gvProducts.SelectedRow.Cells[0].Text;
@@ -110,7 +107,7 @@ namespace TermProject
             product.Desc = gvProducts.SelectedRow.Cells[2].Text;
             product.Price = Convert.ToDouble(gvProducts.SelectedRow.Cells[3].Text);
             TextBox tb = (TextBox) gvProducts.SelectedRow.FindControl("txtQuantity");
-            product.Product_ID = Convert.ToInt32(gvProducts.SelectedRow.Cells[6].Text);
+            product.Product_ID = Convert.ToInt32(gvProducts.DataKeys[rowIndex].Value.ToString());
 
             product.Quantity = Convert.ToInt32(tb.Text);
 

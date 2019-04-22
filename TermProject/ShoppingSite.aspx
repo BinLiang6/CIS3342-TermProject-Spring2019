@@ -26,7 +26,7 @@
             </div>
         <br />
         <div>
-            <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlDepartment_SelectedIndexChanged">
+            <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True" >
             </asp:DropDownList>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -44,10 +44,14 @@
                         <ItemTemplate>
                             <asp:TextBox ID="txtQuantity" runat="server" type="number" />
                         </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:TemplateField>
-                    <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true" />
-                    <asp:BoundField DataField="product_id" HeaderText="Product ID" />
+                    <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true" SelectText="Add to cart" >
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:CommandField>
+                    <asp:BoundField DataField="product_id" HeaderText="Product ID" Visible="False" />
                 </Columns>
+                <HeaderStyle HorizontalAlign="Center" />
             </asp:GridView>
             <br />
             <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>

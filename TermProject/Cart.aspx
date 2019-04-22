@@ -24,14 +24,27 @@
             <asp:GridView ID="gvCart" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gvCart_RowCancelingEdit" OnRowEditing="gvCart_RowEditing" OnRowUpdating="gvCart_RowUpdating" OnRowDeleting="gvCart_RowDeleting" ShowFooter="True" Width="100%">
                 <Columns>
                     <asp:BoundField DataField="Image" ReadOnly="True" />
-                    <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" />
-                    <asp:BoundField DataField="Desc" HeaderText="Description" ReadOnly="True" />
-                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
-                    <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" />
-                    <asp:CommandField ButtonType="Button" HeaderText="Edit" ShowEditButton="True" />
-                    <asp:CommandField ButtonType="Button" EditText="" HeaderText="Delete" ShowDeleteButton="True" />
-                    <asp:BoundField DataField="Product_ID" HeaderText="Product ID" />
+                    <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Desc" HeaderText="Description" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" >
+                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" >
+                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:CommandField ButtonType="Button" ShowEditButton="True" EditText="Update" >
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:CommandField>
+                    <asp:CommandField ButtonType="Button" EditText="" ShowDeleteButton="True" DeleteText="Remove" >
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:CommandField>
                 </Columns>
+                <HeaderStyle HorizontalAlign="Center" />
             </asp:GridView>
             <br />
             <asp:Button ID="btnPlaceOrder" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnPlaceOrder_Click" Text="Place order" />
