@@ -61,7 +61,6 @@ namespace TermProjectWS.Controllers
                 product.Desc = objDB.GetField("desc", i).ToString();
                 product.Price = double.Parse(objDB.GetField("price", i).ToString());
                 product.Image = objDB.GetField("image", i).ToString();
-
                 productList.Add(product);
             }
 
