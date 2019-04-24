@@ -20,6 +20,8 @@ namespace TermProject
             if (!IsPostBack)
             {
                 ShowAccountInfo();
+                objCommand.Parameters.Clear();
+                ShowOrderHistory();
             }
         }
 
@@ -53,6 +55,7 @@ namespace TermProject
                     objDB.DoUpdateUsingCmdObj(objCommand);
 
                     lblSuccess.Visible = true;
+                    txtPassword.Text = ""; txtNewPassword.Text = ""; txtConfirmPassword.Text = ""; 
                 }
                 else
                 {
@@ -64,6 +67,7 @@ namespace TermProject
 
         protected void ShowAccountInfo()
         {
+            objCommand.Parameters.Clear();
             objCommand.CommandType = CommandType.StoredProcedure;
             objCommand.CommandText = "TP_GetCustomer_ByUsername";
             objCommand.Parameters.AddWithValue("@theUsername", Session["username"].ToString());
@@ -73,8 +77,20 @@ namespace TermProject
             gvAccountInfo.DataBind();
         }
 
+        protected void ShowOrderHistory()
+        {
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_GetOrderHistory";
+            objCommand.Parameters.AddWithValue("@theID", Convert.ToInt32(Session["customerID"].ToString()));
+            DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+
+            gvOrder.DataSource = myDataSet;
+            gvOrder.DataBind();
+        }
+
         protected void gvAccountInfo_RowEditing(Object sender, System.Web.UI.WebControls.GridViewEditEventArgs e)
         {
+            lblSuccess.Visible = false;
             // Set the row to edit-mode in the GridView
             gvAccountInfo.EditIndex = e.NewEditIndex;
             ShowAccountInfo();
@@ -90,20 +106,37 @@ namespace TermProject
 
         protected void gvAccountInfo_RowUpdating(Object sender, System.Web.UI.WebControls.GridViewUpdateEventArgs e)
         {
-            //int rowIndex = e.RowIndex;
-            //int id = int.Parse(gvAccountInfo.Rows[rowIndex].Cells[0].Text);
-            //TextBox TBox;
-            //TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[1].Controls[0];
-            //String name = TBox.Text;
-            //TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[2].Controls[0];
-            //String url = TBox.Text;
+            int rowIndex = e.RowIndex;
+            TextBox TBox;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[0].Controls[0];
+            String username = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[1].Controls[0];
+            String name = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[2].Controls[0];
+            String address = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[3].Controls[0];
+            String city = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[4].Controls[0];
+            String state = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[5].Controls[0];
+            String zip = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[6].Controls[0];
+            String phone = TBox.Text;
+            TBox = (TextBox)gvAccountInfo.Rows[rowIndex].Cells[7].Controls[0];
+            String email = TBox.Text;
 
-            //objCommand.CommandType = CommandType.StoredProcedure;
-            //objCommand.CommandText = "";
-            //objCommand.Parameters.AddWithValue("@theName", name);
-            //objCommand.Parameters.AddWithValue("@theURL", url);
-            //objCommand.Parameters.AddWithValue("@theID", id);
-            //objDB.DoUpdateUsingCmdObj(objCommand);
+            objCommand.CommandType = CommandType.StoredProcedure;
+            objCommand.CommandText = "TP_UpdateAccountInfo";
+            objCommand.Parameters.AddWithValue("@theID", Convert.ToInt32(Session["customerID"]));
+            objCommand.Parameters.AddWithValue("@theUsername", username);
+            objCommand.Parameters.AddWithValue("@theName", name);
+            objCommand.Parameters.AddWithValue("@theAddress", address);
+            objCommand.Parameters.AddWithValue("@theCity", city);
+            objCommand.Parameters.AddWithValue("@theState", state);
+            objCommand.Parameters.AddWithValue("@theZip", zip);
+            objCommand.Parameters.AddWithValue("@thePhone", phone);
+            objCommand.Parameters.AddWithValue("@theEmail", email);
+            objDB.DoUpdateUsingCmdObj(objCommand);
 
             gvAccountInfo.EditIndex = -1;
             ShowAccountInfo();
