@@ -83,8 +83,11 @@ namespace TermProject
 
                     try
                     {
+                        string merchantName = MerchantDS.Tables[0].Rows[0]["seller_site"].ToString();
+                        string merchantID = MerchantDS.Tables[0].Rows[0]["id"].ToString();
                         lblDisplay.Text = "";
-                        lblSuccess.Text = "Sign in successfully! Welcome back <b>" + MerchantDS.Tables[0].Rows[0]["seller_site"].ToString() + "</b>"; //Give the first table that found in the dataset
+                        lblSuccess.Text = "Sign in successfully! Welcome back <b>" + merchantName + "</b>"; //Give the first table that found in the dataset
+                        Session["merchantID"] = merchantID;
                         Session["email"] = username;
                         Session["accountType"] = accountType;
                         Session["password"] = password;
