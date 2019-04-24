@@ -68,6 +68,15 @@
                 <!--Order history-->
                 <div class="form-group">
                     <label><b>Order history</b></label>
+                    <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" Width="100%">
+                        <Columns>
+                            <asp:BoundField DataField="image" HeaderText="Image" />
+                            <asp:BoundField DataField="title" HeaderText="Title" />
+                            <asp:BoundField DataField="desc" HeaderText="Description" />
+                            <asp:BoundField DataField="quantity" HeaderText="Quantity" />
+                            <asp:BoundField DataField="price" HeaderText="Price" />
+                        </Columns>
+                    </asp:GridView>
                 </div>
                 <!--Go back-->
                 <hr />
