@@ -34,6 +34,10 @@ namespace TermProject
             gvCart.Columns[4].FooterText = totalcost.ToString("C2");
             productlist = (ArrayList)Session["Productlist"];
             gvCart.DataSource = productlist;
+
+            String[] productid = new string[1];
+            productid[0] = "product_id";
+            gvCart.DataKeyNames = productid;
             gvCart.DataBind();
         }
 
@@ -90,13 +94,17 @@ namespace TermProject
         protected void btnPlaceOrder_Click(object sender, EventArgs e)
         {
             //Retrieve the products in the cart
-            productlist = (ArrayList)Session["Productlist"];
+            //productlist = (ArrayList)Session["Productlist"];
+            Product product = new Product();
+            // Serialize a City object into a JSON string
             JavaScriptSerializer js = new JavaScriptSerializer();
 
             //Adding each product into the database
-            foreach (Product product in productlist)
-            {           
+            for (int row = 0; row < gvCart.Rows.Count; row++)
+            {
+                product.Quantity = Convert.ToInt32(gvCart.Rows[row].Cells[3].Text);
                 product.Customer_ID = Convert.ToInt32(Session["customerID"].ToString());
+                product.Product_ID = Convert.ToInt32(gvCart.DataKeys[row].Value.ToString());
 
                 String jsonCheckout = js.Serialize(product);
 
