@@ -22,6 +22,16 @@ namespace TermProject
                 ShowAccountInfo();
                 objCommand.Parameters.Clear();
                 ShowOrderHistory();
+
+                objCommand.Parameters.Clear();
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_GetCustomer_SecurityQuestion";
+                objCommand.Parameters.AddWithValue("@theID", Convert.ToInt32(Session["customerID"].ToString()));
+                DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objCommand);
+
+                txtSq1.Text = myDataSet.Tables[0].Rows[0]["sq1"].ToString();
+                txtSq2.Text = myDataSet.Tables[0].Rows[0]["sq2"].ToString();
+                txtSq3.Text = myDataSet.Tables[0].Rows[0]["sq3"].ToString();
             }
         }
 
@@ -140,6 +150,55 @@ namespace TermProject
 
             gvAccountInfo.EditIndex = -1;
             ShowAccountInfo();
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            txtSq1.ReadOnly = false;
+            txtSq2.ReadOnly = false;
+            txtSq3.ReadOnly = false;
+            btnEdit.Visible = false;
+            btnSave.Visible = true;
+            btnCancel.Visible = true;
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            txtSq1.ReadOnly = true;
+            txtSq2.ReadOnly = true;
+            txtSq3.ReadOnly = true;
+            btnEdit.Visible = true;
+            btnSave.Visible = false;
+            btnCancel.Visible = false;
+
+            lblSecurity.Text = "";
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtSq1.Text == "" || txtSq2.Text == "" || txtSq3.Text == "")
+            {
+                lblSecurity.Text = "Please answer all questions";
+            }
+            else
+            {
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_UpdateSecurityQuestion";
+                objCommand.Parameters.AddWithValue("@theID", Convert.ToInt32(Session["customerID"]));
+                objCommand.Parameters.AddWithValue("@theSQ1", txtSq1.Text);
+                objCommand.Parameters.AddWithValue("@theSQ2", txtSq2.Text);
+                objCommand.Parameters.AddWithValue("@theSQ3", txtSq3.Text);
+                objDB.DoUpdateUsingCmdObj(objCommand);
+
+                txtSq1.ReadOnly = true;
+                txtSq2.ReadOnly = true;
+                txtSq3.ReadOnly = true;
+                btnEdit.Visible = true;
+                btnSave.Visible = false;
+                btnCancel.Visible = false;
+
+                lblSecurity.Text = "";
+            }
         }
     }
 }

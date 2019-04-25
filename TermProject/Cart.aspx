@@ -43,6 +43,7 @@
                     <asp:CommandField ButtonType="Button" EditText="" ShowDeleteButton="True" DeleteText="Remove" >
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:CommandField>
+                    <asp:BoundField DataField="product_id" HeaderText="Product ID" Visible="False" />
                 </Columns>
                 <HeaderStyle HorizontalAlign="Center" />
             </asp:GridView>

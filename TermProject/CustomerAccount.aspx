@@ -41,6 +41,21 @@
                 <!--Account security questions-->
                 <div class="form-group">
                     <label><b>Edit your security question</b></label>
+                    <br />
+                    Security question 1:<br />
+                    <label>What is your sibling&#39;s middle name?</label>
+                    <asp:TextBox ID="txtSq1" class="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                    Security Question 2:<br />
+                    <label>What is your high school mascot?</label>
+                    <asp:TextBox ID="txtSq2" class="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                    Security Question 3:<br />
+                    <label>What is your favorite board game?</label>
+                    <asp:TextBox ID="txtSq3" class="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                    <asp:Label ID="lblSecurity" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+                    <br />
+                    <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" /> 
+                    <asp:Button ID="btnSave" runat="server" Text="Save answers" Visible="false" OnClick="btnSave_Click" /> 
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" Visible="false" OnClick="btnCancel_Click" />
                 </div>
                 <!--Reset password-->
                 <div class="form-group">
@@ -75,6 +90,7 @@
                             <asp:BoundField DataField="desc" HeaderText="Description" />
                             <asp:BoundField DataField="quantity" HeaderText="Quantity" />
                             <asp:BoundField DataField="price" HeaderText="Price" />
+                            <asp:BoundField HeaderText="Total" />
                         </Columns>
                     </asp:GridView>
                 </div>

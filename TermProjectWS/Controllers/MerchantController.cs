@@ -58,6 +58,7 @@ namespace TermProjectWS.Controllers
             {
                 Product product = new Product();
                 product.Product_ID = int.Parse(objDB.GetField("product_id", i).ToString());
+                product.Title = objDB.GetField("title", i).ToString();
                 product.Desc = objDB.GetField("desc", i).ToString();
                 product.Price = double.Parse(objDB.GetField("price", i).ToString());
                 product.Image = objDB.GetField("image", i).ToString();
