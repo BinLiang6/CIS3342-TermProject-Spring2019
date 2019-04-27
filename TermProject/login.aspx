@@ -47,7 +47,7 @@
                             <div class="checkbox">
                                 <label>
                                     <asp:CheckBox ID="chkRemember" runat="server" />
-                                    Keep me signed in
+                                    Remember me
                                 </label>
                                 <asp:Label ID="lblDisplay" class="float-right" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
                             </div>

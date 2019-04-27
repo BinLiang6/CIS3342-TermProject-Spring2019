@@ -15,9 +15,26 @@ namespace TermProject
         DBConnect objDB = new DBConnect();
         SqlCommand objCommand = new SqlCommand();
 
+        private Byte[] key = { 250, 101, 18, 76, 45, 135, 207, 118, 4, 171, 3, 168, 202, 241, 37, 199 };
+        private Byte[] vector = { 146, 64, 191, 111, 23, 3, 113, 119, 231, 121, 252, 112, 79, 32, 114, 156 };
+
         protected void Page_Load(object sender, EventArgs e)
         {
-         
+            if (!IsPostBack && Request.Cookies["CIS3342_Cookie"] != null)
+            {
+                String accountType = ddlLogin.SelectedValue.ToString();
+
+                if (accountType == "customer")
+                {
+                    HttpCookie cookie = Request.Cookies["CIS3342_Cookie"];
+                    txtUsername.Text = cookie.Values["username"].ToString();
+                    txtPassword.Text = cookie.Values["password"].ToString();
+                }
+                else if (accountType == "merchant")
+                {
+
+                }
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -63,6 +80,17 @@ namespace TermProject
                         Session["accountType"] = accountType;
                         Session["password"] = password;
                         lblSuccess.Visible = true;
+
+                        if (chkRemember.Checked == true)
+                        {
+                            HttpCookie customerCookie = new HttpCookie("CIS3342_Cookie");
+                            customerCookie.Values["username"] = txtUsername.Text;
+                            customerCookie.Values["password"] = txtPassword.Text;
+                            customerCookie.Values["LastVisited"] = DateTime.Now.ToString();
+                            customerCookie.Expires = new DateTime(2025, 1, 1);
+                            Response.Cookies.Add(customerCookie);
+                        }
+
                         Response.AddHeader("REFRESH", "3;URL=ShoppingSite.aspx");
                     }
                     catch

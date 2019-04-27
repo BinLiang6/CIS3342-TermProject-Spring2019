@@ -19,6 +19,7 @@ namespace TermProject
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/Record/Purchase/";
 
         ArrayList productlist = new ArrayList();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -139,6 +140,9 @@ namespace TermProject
                     {
                         lblDisplay.Text = "A problem occurred while adding the city to the database. The data wasn't recorded.";
                     }
+
+                    //Response.AddHeader("REFRESH", "3;URL=confirmation.aspx");
+                    Response.Redirect("confirmation.aspx");
                 }
                 catch (Exception ex)
                 {
