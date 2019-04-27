@@ -13,39 +13,43 @@
 <body style="padding: 5px;">
     <form id="frmCart" runat="server">
         <br />
-            <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
             <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
-            </div>
+        </div>
         <br />
         <div>
             <h3 style="text-align: center;">Your Shopping Cart</h3>
             <asp:Label ID="lblSuccess" class="alert alert-success btn-block" runat="server" Text="Placed order successfully!" Visible="false"></asp:Label>
-            <asp:Label ID="lblDisplay" style="align-content: center;" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+            <asp:Label ID="lblDisplay" Style="align-content: center;" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
             <asp:GridView ID="gvCart" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gvCart_RowCancelingEdit" OnRowEditing="gvCart_RowEditing" OnRowUpdating="gvCart_RowUpdating" OnRowDeleting="gvCart_RowDeleting" ShowFooter="True" Width="100%">
                 <Columns>
                     <asp:TemplateField HeaderText="Image">
                         <ItemTemplate>
                             <img src='<%# Eval("Image") %>' height="200" width="200" />
                         </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Desc" HeaderText="Description" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="Desc" HeaderText="Description" ReadOnly="True">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Quantity" HeaderText="Quantity" >
-                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="Quantity" HeaderText="Quantity">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" >
-                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:CommandField ButtonType="Button" ShowEditButton="True" EditText="Update" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:CommandField ButtonType="Button" ShowEditButton="True" EditText="Update">
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:CommandField>
-                    <asp:CommandField ButtonType="Button" EditText="" ShowDeleteButton="True" DeleteText="Remove" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:CommandField ButtonType="Button" EditText="" ShowDeleteButton="True" DeleteText="Remove">
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:CommandField>
                     <asp:BoundField DataField="product_id" HeaderText="Product ID" Visible="False" />
                 </Columns>
