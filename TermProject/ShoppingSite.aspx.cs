@@ -21,8 +21,8 @@ namespace TermProject
         SqlCommand objcomm = new SqlCommand();
         int count = 1 ;
         ArrayList productlist = new ArrayList();
-        string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
-
+        //string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
+        string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tuh08400/TermProjectWS/api/service/Merchants/GetDepartments/";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] == null)
@@ -45,8 +45,8 @@ namespace TermProject
                 Department[] departments = js.Deserialize<Department[]>(data);
 
                 ddlDepartment.DataSource = departments;
-                ddlDepartment.DataTextField = "name";
-                ddlDepartment.DataValueField = "department_id";
+                ddlDepartment.DataTextField = "DepartmentName";
+                ddlDepartment.DataValueField = "DepartmentNumber";
                 ddlDepartment.DataBind();
 
                 ViewState["cart"] = lbCart.Text;
