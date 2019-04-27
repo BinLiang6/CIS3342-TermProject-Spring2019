@@ -29,12 +29,19 @@
                     <br />
                     <asp:GridView ID="gvConfirm" runat="server" AutoGenerateColumns="False" ShowFooter="True" Width="100%">
                         <Columns>
-                            <asp:BoundField DataField="Image" ReadOnly="True" />
+                            <asp:TemplateField HeaderText="Image">
+                                <ItemTemplate>
+                                    <img src='<%# Eval("Image") %>' height="200" width="200" />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:TemplateField>
                             <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True">
                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Desc" HeaderText="Description" ReadOnly="True">
                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                             </asp:BoundField>
                             <asp:BoundField DataField="Quantity" HeaderText="Quantity">
                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
