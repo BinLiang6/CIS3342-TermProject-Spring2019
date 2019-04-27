@@ -85,7 +85,12 @@
                     <label><b>Order history</b></label>
                     <asp:GridView ID="gvOrder" runat="server" AutoGenerateColumns="False" Width="100%">
                         <Columns>
-                            <asp:BoundField DataField="image" HeaderText="Image" />
+                            <asp:TemplateField HeaderText="Image">
+                                <ItemTemplate>
+                                    <img src='<%# Eval("Image") %>' height="200" width="200" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            
                             <asp:BoundField DataField="title" HeaderText="Title" />
                             <asp:BoundField DataField="desc" HeaderText="Description" />
                             <asp:BoundField DataField="quantity" HeaderText="Quantity" />

@@ -23,7 +23,11 @@
             <asp:Label ID="lblDisplay" style="align-content: center;" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
             <asp:GridView ID="gvCart" runat="server" AutoGenerateColumns="False" OnRowCancelingEdit="gvCart_RowCancelingEdit" OnRowEditing="gvCart_RowEditing" OnRowUpdating="gvCart_RowUpdating" OnRowDeleting="gvCart_RowDeleting" ShowFooter="True" Width="100%">
                 <Columns>
-                    <asp:BoundField DataField="Image" ReadOnly="True" />
+                    <asp:TemplateField HeaderText="Image">
+                        <ItemTemplate>
+                            <img src='<%# Eval("Image") %>' height="200" width="200" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" >
                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>

@@ -36,10 +36,21 @@
             <br /><br />
             <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="gvProducts_SelectedIndexChanged">
                 <Columns>
-                    <asp:BoundField DataField="image" HeaderText="Image" />
-                    <asp:BoundField DataField="title" HeaderText="Title" />
-                    <asp:BoundField DataField="desc" HeaderText="Description" />
-                    <asp:BoundField DataField="price" HeaderText="Price" />
+                    <asp:TemplateField HeaderText="Image">
+                        <ItemTemplate>
+                            <img src='<%# Eval("Image") %>' height="200" width="200" />
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="title" HeaderText="Title" >
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="desc" HeaderText="Description" >
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="price" HeaderText="Price" >
+                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    </asp:BoundField>
                     <asp:TemplateField HeaderText="Quantity">
                         <ItemTemplate>
                             <asp:TextBox ID="txtQuantity" runat="server" type="number" Text="1" min="1" max="100" />
