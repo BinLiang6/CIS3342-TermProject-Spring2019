@@ -28,17 +28,11 @@ namespace TermProject
             if (!IsPostBack && Request.Cookies["CIS3342_Cookie"] != null)
             {
                 String accountType = ddlLogin.SelectedValue.ToString();
-
-                if (accountType == "customer")
-                {
-                    HttpCookie cookie = Request.Cookies["CIS3342_Cookie"];
-                    txtUsername.Text = cookie.Values["username"].ToString();
-                    txtPassword.Text = cookie.Values["password"].ToString();
-                }
-                else if (accountType == "merchant")
-                {
-                    
-                }
+                
+                HttpCookie cookie = Request.Cookies["CIS3342_Cookie"];
+                txtUsername.Text = cookie.Values["username"].ToString();
+                txtPassword.Text = cookie.Values["password"].ToString();
+                ddlLogin.SelectedValue = cookie.Values["accountType"].ToString();
             }
         }
 
@@ -111,7 +105,7 @@ namespace TermProject
                         Session["customerID"] = CustomerDS.Tables[0].Rows[0]["customer_id"].ToString();
                         Session["username"] = username;
                         Session["accountType"] = accountType;
-                        Session["password"] = encryptedPassword;
+                        Session["password"] = plainTextPassword;
                         lblSuccess.Visible = true;
 
                         if (chkRemember.Checked == true)
@@ -119,6 +113,7 @@ namespace TermProject
                             HttpCookie customerCookie = new HttpCookie("CIS3342_Cookie");
                             customerCookie.Values["username"] = txtUsername.Text;
                             customerCookie.Values["password"] = txtPassword.Text;
+                            customerCookie.Values["accountType"] = ddlLogin.SelectedValue;
                             customerCookie.Values["LastVisited"] = DateTime.Now.ToString();
                             customerCookie.Expires = new DateTime(2025, 1, 1);
                             Response.Cookies.Add(customerCookie);
@@ -152,8 +147,20 @@ namespace TermProject
                         Session["merchantID"] = merchantID;
                         Session["email"] = username;
                         Session["accountType"] = accountType;
-                        Session["password"] = encryptedPassword;
+                        Session["password"] = plainTextPassword;
                         lblSuccess.Visible = true;
+
+                        if (chkRemember.Checked == true)
+                        {
+                            HttpCookie customerCookie = new HttpCookie("CIS3342_Cookie");
+                            customerCookie.Values["username"] = txtUsername.Text;
+                            customerCookie.Values["password"] = txtPassword.Text;
+                            customerCookie.Values["accountType"] = ddlLogin.SelectedValue;
+                            customerCookie.Values["LastVisited"] = DateTime.Now.ToString();
+                            customerCookie.Expires = new DateTime(2025, 1, 1);
+                            Response.Cookies.Add(customerCookie);
+                        }
+
                         Response.AddHeader("REFRESH", "3;URL=MerchantAccount.aspx");
                     }
                     catch

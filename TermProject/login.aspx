@@ -47,10 +47,7 @@
                         <!-- form-group// -->
                         <div class="form-group">
                             <div class="checkbox">
-                                <label>
-                                    <asp:CheckBox ID="chkRemember" runat="server" />
-                                    Remember me
-                                </label>
+                                <asp:CheckBox ID="chkRemember" runat="server" /> Remember me
                                 <asp:Label ID="lblDisplay" class="float-right" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
                             </div>
                             <!-- checkbox .// -->
