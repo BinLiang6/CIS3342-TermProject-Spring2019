@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 
 using System.Collections;
 using System.Web.Script.Serialization;
-using System.IO;
 using System.Net;
 using Utilities;
 using ClassLibrary;
+using System.Runtime.Serialization.Formatters.Binary;       //needed for BinaryFormatter
+using System.IO;                                            //needed for the MemoryStream
 
 namespace TermProject
 {
@@ -19,6 +20,8 @@ namespace TermProject
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/Record/Purchase/";
 
         ArrayList productlist = new ArrayList();
+
+        DBConnect objDB = new DBConnect();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +34,21 @@ namespace TermProject
         //Display the all of the product in the cart and the toal cost
         public void showCart(double totalcost)
         {
+            String sql = "SELECT cart FROM TP_Customer WHERE customer_id = '" + Session["customerID"].ToString() + "'";
+            objDB.GetDataSet(sql);
+
+            if(objDB.GetField("cart", 0) != System.DBNull.Value)
+            {
+                // De-serialize the binary data to reconstruct the CreditCard object retrieved
+                // from the database
+                Byte[] byteArray = (Byte[])objDB.GetField("cart", 0);
+
+                BinaryFormatter deSerializer = new BinaryFormatter();
+                MemoryStream memStream = new MemoryStream(byteArray);
+
+                Product product = (Product)deSerializer.Deserialize(memStream);
+            }
+
             gvCart.Columns[0].FooterText = "Total";
             gvCart.Columns[4].FooterText = totalcost.ToString("C2");
             productlist = (ArrayList)Session["Productlist"];

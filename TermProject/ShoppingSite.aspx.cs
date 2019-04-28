@@ -6,12 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections;
 using System.Web.Script.Serialization;
-using System.IO;
 using System.Net;
 using Utilities;
 using ClassLibrary;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.Serialization.Formatters.Binary;       //needed for BinaryFormatter
+using System.IO;                                            //needed for the MemoryStream
 
 namespace TermProject
 {
@@ -19,10 +20,13 @@ namespace TermProject
     {
         DBConnect objDB = new DBConnect();
         SqlCommand objcomm = new SqlCommand();
+
         int count = 1 ;
         ArrayList productlist = new ArrayList();
+
         string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tug13955/TermProjectWS/api/service/Merchants/";
         //string url = "http://cis-iis2.temple.edu/Spring2019/CIS3342_tuh08400/TermProjectWS/api/service/Merchants/GetDepartments/";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["username"] == null)
@@ -108,7 +112,6 @@ namespace TermProject
             product.Price = Convert.ToDouble(gvProducts.SelectedRow.Cells[3].Text);
             TextBox tb = (TextBox) gvProducts.SelectedRow.FindControl("txtQuantity");
             product.Product_ID = Convert.ToInt32(gvProducts.DataKeys[rowIndex].Value.ToString());
-
             product.Quantity = Convert.ToInt32(tb.Text);
 
             if(ViewState["Productlist"] != null)
@@ -123,6 +126,19 @@ namespace TermProject
             ViewState["Productlist"] = productlist;
             Session["Productlist"] = productlist;
 
+            // Serialize the CreditCard object
+            BinaryFormatter serializer = new BinaryFormatter();
+            MemoryStream memStream = new MemoryStream();
+            Byte[] byteArray;
+            serializer.Serialize(memStream, productlist);
+            byteArray = memStream.ToArray();
+
+            // Update the account to store the serialized object (binary data) in the database
+            objcomm.CommandType = CommandType.StoredProcedure;
+            objcomm.CommandText = "TP_StoreCart";
+            objcomm.Parameters.AddWithValue("theID", Session["customerID"]);
+            objcomm.Parameters.AddWithValue("theCart", byteArray);
+            objDB.DoUpdateUsingCmdObj(objcomm);
         }
 
         protected void btnViewCart_Click(object sender, EventArgs e)
