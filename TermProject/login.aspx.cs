@@ -130,5 +130,17 @@ namespace TermProject
                 }
             }
         }
+
+        protected void lbForgotPassword_Click(object sender, EventArgs e)
+        {
+            if (ddlLogin.SelectedValue.ToString() == "customer")
+            {
+                Response.Redirect("forgot-password.aspx");
+            }
+            else if (ddlLogin.SelectedValue.ToString() == "merchant")
+            {
+                Response.Redirect("merchant-forgot-password.aspx");
+            }
+        }
     }
 }

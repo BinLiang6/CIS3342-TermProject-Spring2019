@@ -30,10 +30,12 @@
             </asp:DropDownList>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnLogout" class="float-right" runat="server" Text="Sign Out" OnClick="btnLogout_Click" />
+            <asp:Button ID="btnLogout" class="float-right" runat="server" Text="Sign Out" OnClick="btnLogout_Click" />&nbsp;&nbsp;
             <asp:Button ID="btnAccount" class="float-right" runat="server" Text="Account setting" OnClick="btnAccount_Click" />
-            <asp:LinkButton ID="lbCart" runat="server" OnClick="lbCart_Click"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</asp:LinkButton>
+            <asp:LinkButton ID="lbCart" runat="server" OnClick="lbCart_Click" ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</asp:LinkButton>
+            <hr />
             <br />
+            <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
             <br />
             <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" Width="100%" OnSelectedIndexChanged="gvProducts_SelectedIndexChanged">
                 <Columns>
@@ -71,7 +73,7 @@
                 <HeaderStyle HorizontalAlign="Center" />
             </asp:GridView>
             <br />
-            <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
+            
             <asp:Button ID="Button1" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnViewCart_Click" Text="View Cart" />
             <br />
             <br />
