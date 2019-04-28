@@ -36,9 +36,16 @@
                         <br />
                         <asp:TextBox ID="txtPassword" type="password" class="form-control" runat="server"></asp:TextBox>
                         <br />
-                        <label>Email</label>
-                        <br />
-                        <asp:TextBox ID="txtEmail" type="email" class="form-control" runat="server"></asp:TextBox>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                <asp:TextBox ID="txtEmail" type="email" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Phone number</label>
+                                <asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
                         <br />
                         <label>Address</label>
                         <br />
@@ -58,10 +65,6 @@
                                 <asp:TextBox ID="txtZipcode" type="number" class="form-control" runat="server"></asp:TextBox>
                             </div>
                         </div>
-                        <br />
-                        <label>Phone Number</label>
-                        <br />
-                        <asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
                         <br />
                         Security Question 1:<br />
                         <label>What is your sibling&#39;s middle name?</label>

@@ -24,66 +24,52 @@
                 <div class="card">
                     <article class="card-body">
                         <h2 class="card-title mb-4 mt-1">Create merchant account</h2>
-                        <p>
-                            <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtName" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtEmail" class="form-control" type="email" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label10" runat="server" Text="Password"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtPassword" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label2" runat="server" Text="Description"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtDesc" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label9" runat="server" Text="API URL (optional)"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtUrl" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label5" runat="server" Text="Address"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtAddress" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label6" runat="server" Text="City"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtCity" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label7" runat="server" Text="State"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtState" class="form-control" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label8" runat="server" Text="Zipcode"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtZipcode" class="form-control" type="number" runat="server"></asp:TextBox>
-                        </p>
-                        <p>
-                            <asp:Label ID="Label4" runat="server" Text="Phone"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
-                        </p>
+                        <label>Merchant name</label>
+                        <br />
+                        <asp:TextBox ID="txtName" class="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                <asp:TextBox ID="txtEmail" type="email" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Phone number</label>
+                                <asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <br />
+                        <label>Password</label>
+                        <br />
+                        <asp:TextBox ID="txtPassword" type="password" class="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>Description</label>
+                        <br />
+                        <asp:TextBox ID="txtDesc" class="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>API URL (optional)</label>
+                        <br />
+                        <asp:TextBox ID="txtUrl" class="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <label>Address</label>
+                        <br />
+                        <asp:TextBox ID="txtAddress" class="form-control" runat="server"></asp:TextBox>
+                        <br />
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label>City</label>
+                                <asp:TextBox ID="txtCity" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-2">
+                                <label>State</label>
+                                <asp:TextBox ID="txtState" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Zip code</label>
+                                <asp:TextBox ID="txtZipcode" type="number" class="form-control" runat="server"></asp:TextBox>
+                            </div>
+                        </div>
+                        <br />
                         <asp:Label ID="lblDisplay" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
                         <asp:Label ID="lblSuccess" class=" alert alert-success btn-block" runat="server" Text="Label" Visible="False"></asp:Label>
                         <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
