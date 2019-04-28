@@ -40,7 +40,7 @@ namespace TermProject
                                    "Shipping address: " +
                                          myDS.Tables[0].Rows[0]["address"].ToString() + ", " +
                                          myDS.Tables[0].Rows[0]["city"].ToString() + ", " +
-                                         myDS.Tables[0].Rows[0]["state"].ToString() + "," +
+                                         myDS.Tables[0].Rows[0]["state"].ToString() + ", " +
                                          myDS.Tables[0].Rows[0]["zipcode"].ToString();
             }
         }
