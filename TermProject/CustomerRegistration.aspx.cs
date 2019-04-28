@@ -42,18 +42,48 @@ namespace TermProject
 
             if(ds.Tables[0].Rows.Count == 0)
             {
+                String plainTextPassword = txtPassword.Text;
+                String encryptedPassword;
+
+                UTF8Encoding encoder = new UTF8Encoding();      // used to convert bytes to characters, and back
+                Byte[] textBytes;                               // stores the plain text data as bytes
+
+                // Perform Encryption
+                // Convert a string to a byte array, which will be used in the encryption process.
+                textBytes = encoder.GetBytes(plainTextPassword);
+
+                RijndaelManaged rmEncryption = new RijndaelManaged();
+                MemoryStream myMemoryStream = new MemoryStream();
+                CryptoStream myEncryptionStream = new CryptoStream(myMemoryStream, rmEncryption.CreateEncryptor(key, vector), CryptoStreamMode.Write);
+
+                // Use the crypto stream to perform the encryption on the plain text byte array.
+                myEncryptionStream.Write(textBytes, 0, textBytes.Length);
+                myEncryptionStream.FlushFinalBlock();
+
+                // Retrieve the encrypted data from the memory stream, and write it to a separate byte array.
+                myMemoryStream.Position = 0;
+                Byte[] encryptedBytes = new Byte[myMemoryStream.Length];
+                myMemoryStream.Read(encryptedBytes, 0, encryptedBytes.Length);
+
+                // Close all the streams.
+                myEncryptionStream.Close();
+                myMemoryStream.Close();
+
+                // Convert the bytes to a string and display it.
+                encryptedPassword = Convert.ToBase64String(encryptedBytes);
+
                 Customer customer = new Customer();
                 customer.Name = txtName.Text;
                 customer.Username = txtUsername.Text;
-                customer.Password = txtPassword.Text;
+                customer.Password = encryptedPassword;
                 customer.Email = txtEmail.Text;
                 customer.Address = txtAddress.Text;
                 customer.Phone = txtPhone.Text;
                 customer.Sq1 = txtSq1.Text;
                 customer.Sq2 = txtSq2.Text;
                 customer.Sq3 = txtSq3.Text;
-
-                if(customer != null)
+                
+                if (customer != null)
                 {
                     try
                     {

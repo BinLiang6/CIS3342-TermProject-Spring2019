@@ -37,17 +37,27 @@ namespace TermProject
             String sql = "SELECT cart FROM TP_Customer WHERE customer_id = '" + Session["customerID"].ToString() + "'";
             objDB.GetDataSet(sql);
 
-            if(objDB.GetField("cart", 0) != System.DBNull.Value)
-            {
-                // De-serialize the binary data to reconstruct the CreditCard object retrieved
-                // from the database
-                Byte[] byteArray = (Byte[])objDB.GetField("cart", 0);
+            //if (objDB.GetField("cart", 0) != System.DBNull.Value)
+            //{
+            //    // De-serialize the binary data to reconstruct the CreditCard object retrieved
+            //    // from the database
+            //    Byte[] byteArray = (Byte[])objDB.GetField("cart", 0);
 
-                BinaryFormatter deSerializer = new BinaryFormatter();
-                MemoryStream memStream = new MemoryStream(byteArray);
+            //    BinaryFormatter deSerializer = new BinaryFormatter();
+            //    MemoryStream memStream = new MemoryStream(byteArray);
 
-                Product product = (Product)deSerializer.Deserialize(memStream);
-            }
+            //    Product product = (Product)deSerializer.Deserialize(memStream);
+
+            //    productlist = (ArrayList)Session["Productlist"];
+            //    productlist.Add(product);
+
+            //    gvCart.DataSource = productlist;
+            //    gvCart.DataBind();
+            //}
+            //else if (objDB.GetField("cart", 0) == System.DBNull.Value)
+            //{
+
+            //}
 
             gvCart.Columns[0].FooterText = "Total";
             gvCart.Columns[4].FooterText = totalcost.ToString("C2");

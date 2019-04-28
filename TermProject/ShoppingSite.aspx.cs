@@ -126,6 +126,8 @@ namespace TermProject
             ViewState["Productlist"] = productlist;
             Session["Productlist"] = productlist;
 
+            lblNotify.Visible = false;
+
             // Serialize the CreditCard object
             BinaryFormatter serializer = new BinaryFormatter();
             MemoryStream memStream = new MemoryStream();
