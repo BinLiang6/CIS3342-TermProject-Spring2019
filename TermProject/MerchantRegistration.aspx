@@ -9,12 +9,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap-style.css" />
-    <title></title>
+    <title>Amazon - Merchant registration</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <br />
-            <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
             <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
         </div>
         <br />
@@ -30,20 +30,18 @@
                         <p>
                             <asp:TextBox ID="txtName" class="form-control" runat="server"></asp:TextBox>
                         </p>
-
                         <p>
                             <asp:Label ID="Label3" runat="server" Text="Email"></asp:Label>
                         </p>
                         <p>
-                            <asp:TextBox ID="txtEmail" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtEmail" class="form-control" type="email" runat="server"></asp:TextBox>
                         </p>
-                         <p>
+                        <p>
                             <asp:Label ID="Label10" runat="server" Text="Password"></asp:Label>
                         </p>
                         <p>
                             <asp:TextBox ID="txtPassword" class="form-control" runat="server"></asp:TextBox>
                         </p>
-                        
                         <p>
                             <asp:Label ID="Label2" runat="server" Text="Description"></asp:Label>
                         </p>
@@ -51,12 +49,11 @@
                             <asp:TextBox ID="txtDesc" class="form-control" runat="server"></asp:TextBox>
                         </p>
                         <p>
-                            <asp:Label ID="Label9" runat="server" Text="URL"></asp:Label>
+                            <asp:Label ID="Label9" runat="server" Text="API URL (optional)"></asp:Label>
                         </p>
                         <p>
                             <asp:TextBox ID="txtUrl" class="form-control" runat="server"></asp:TextBox>
                         </p>
-                        
                         <p>
                             <asp:Label ID="Label5" runat="server" Text="Address"></asp:Label>
                         </p>
@@ -79,31 +76,24 @@
                             <asp:Label ID="Label8" runat="server" Text="Zipcode"></asp:Label>
                         </p>
                         <p>
-                            <asp:TextBox ID="txtZipcode" class="form-control" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtZipcode" class="form-control" type="number" runat="server"></asp:TextBox>
                         </p>
-                        
                         <p>
                             <asp:Label ID="Label4" runat="server" Text="Phone"></asp:Label>
                         </p>
                         <p>
                             <asp:TextBox ID="txtPhone" class="form-control" runat="server"></asp:TextBox>
                         </p>
+                        <asp:Label ID="lblDisplay" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
                         <asp:Label ID="lblSuccess" class=" alert alert-success btn-block" runat="server" Text="Label" Visible="False"></asp:Label>
-
-                        <p>
-                            <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
-                        </p>
-                        <p>
-                            <asp:Button ID="btnAddMerchant" class="btn btn-warning btn-block" Style="border: 1px solid grey;" runat="server" OnClick="btnAddMerchant_Click" Text="Create your Amazon merchant account" />
-                        </p>
+                        <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
+                        <asp:Button ID="btnAddMerchant" class="btn btn-warning btn-block" Style="border: 1px solid grey;" runat="server" OnClick="btnAddMerchant_Click" Text="Create your Amazon merchant account" />
                         <hr />
                         <a href="login.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Go back to Sign in</a>
-
                     </article>
                 </div>
             </div>
         </div>
-
     </form>
 </body>
 </html>

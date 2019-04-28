@@ -37,7 +37,7 @@ namespace TermProject
                 }
                 else if (accountType == "merchant")
                 {
-
+                    
                 }
             }
         }
@@ -139,7 +139,7 @@ namespace TermProject
                     objCommand.CommandType = CommandType.StoredProcedure;
                     objCommand.CommandText = "TP_GetLogIn_Merchant";
                     objCommand.Parameters.AddWithValue("@theEmail", username);
-                    objCommand.Parameters.AddWithValue("@thePassword", plainTextPassword);
+                    objCommand.Parameters.AddWithValue("@thePassword", encryptedPassword);
                     // Execute the stored procedure using the DBConnect object and the SQLCommand object
                     DataSet MerchantDS = objDB.GetDataSetUsingCmdObj(objCommand);
 
@@ -152,7 +152,7 @@ namespace TermProject
                         Session["merchantID"] = merchantID;
                         Session["email"] = username;
                         Session["accountType"] = accountType;
-                        Session["password"] = plainTextPassword;
+                        Session["password"] = encryptedPassword;
                         lblSuccess.Visible = true;
                         Response.AddHeader("REFRESH", "3;URL=MerchantAccount.aspx");
                     }
