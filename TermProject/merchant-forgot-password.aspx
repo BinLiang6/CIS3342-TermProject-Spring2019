@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label><b>API Key</b></label>
-                                <asp:TextBox ID="txtAPIKey" class="form-control" runat="server" placeholder="*********" />
+                                <asp:TextBox ID="txtAPIKey" class="form-control" runat="server" />
                             </div>
                             <br />
                             <div class="form-group">
@@ -68,12 +68,9 @@
                             <a href="login.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Go back to Sign in</a>
                         </div>
                     </article>
-
                 </div>
             </div>
-            
-             
-                <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
         </div>
     </form>
 </body>
