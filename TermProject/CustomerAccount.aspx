@@ -89,13 +89,24 @@
                                 <ItemTemplate>
                                     <img src='<%# Eval("Image") %>' height="200" width="200" />
                                 </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                             </asp:TemplateField>
-                            
-                            <asp:BoundField DataField="title" HeaderText="Title" />
-                            <asp:BoundField DataField="desc" HeaderText="Description" />
-                            <asp:BoundField DataField="quantity" HeaderText="Quantity" />
-                            <asp:BoundField DataField="price" HeaderText="Price" />
-                            <asp:BoundField HeaderText="Total" />
+                            <asp:BoundField DataField="title" HeaderText="Title">
+                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="desc" HeaderText="Description">
+                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="quantity" HeaderText="Quantity">
+                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="price" HeaderText="Price">
+                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                            </asp:BoundField>
                         </Columns>
                     </asp:GridView>
                 </div>

@@ -21,12 +21,12 @@
 <body style="padding: 5px;">
     <form id="frmShopping" runat="server">
         <br />
-            <div class="d-flex justify-content-center">
-                <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
-            </div>
+        <div class="d-flex justify-content-center">
+            <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
+        </div>
         <br />
         <div>
-            <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True" >
+            <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True">
             </asp:DropDownList>&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,23 +45,28 @@
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:TemplateField>
-                    <asp:BoundField DataField="title" HeaderText="Title" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="title" HeaderText="Title">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="desc" HeaderText="Description" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="desc" HeaderText="Description">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="price" HeaderText="Price" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:BoundField DataField="price" HeaderText="Price">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="Quantity">
                         <ItemTemplate>
                             <asp:TextBox ID="txtQuantity" runat="server" type="number" Text="1" min="1" max="100" />
                         </ItemTemplate>
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:TemplateField>
-                    <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true" SelectText="Add to cart" >
-                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                    <asp:CommandField ButtonType="Button" HeaderText="Add to Cart" ShowSelectButton="true" SelectText="Add to cart">
+                        <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                     </asp:CommandField>
                     <asp:BoundField DataField="product_id" HeaderText="Product ID" Visible="False" />
                 </Columns>
@@ -70,7 +75,8 @@
             <br />
             
             <asp:Button ID="Button1" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnViewCart_Click" Text="View Cart" />
-            <br /><br />
+            <br />
+            <br />
         </div>
     </form>
 </body>
