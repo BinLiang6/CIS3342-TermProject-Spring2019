@@ -38,9 +38,11 @@
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
-                            <a class="float-right" href="forgot-password.aspx">Forgot your password?</a>
-                            <label><b>Password</b></label>
-                            <asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="********" type="password" />
+                            
+                            <asp:LinkButton ID="lbForgotPassword" class="float-right" runat="server" OnClick="lbForgotPassword_Click">Forgot your password?</asp:LinkButton>
+                            <label><b>Password</b>
+                            </label>
+                            &nbsp;<asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="********" type="password" />
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">

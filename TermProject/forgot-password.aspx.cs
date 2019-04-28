@@ -100,6 +100,7 @@ namespace TermProject
                 objDB.DoUpdateUsingCmdObj(objCommand);
 
                 lblSuccess.Visible = true;
+                
                 Session.Clear();
                 Response.AddHeader("REFRESH", "3;URL=login.aspx");
             }

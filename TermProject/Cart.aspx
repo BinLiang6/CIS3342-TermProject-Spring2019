@@ -25,7 +25,7 @@
                 <Columns>
                     <asp:TemplateField HeaderText="Image">
                         <ItemTemplate>
-                            <img src='<%# Eval("Image") %>' height="200" width="200" />
+                            <img src='<%# Eval("image") %>' height="200" width="200" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="Title" HeaderText="Title" ReadOnly="True" >
@@ -52,7 +52,13 @@
                 <HeaderStyle HorizontalAlign="Center" />
             </asp:GridView>
             <br />
+            
             <asp:Button ID="btnPlaceOrder" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnPlaceOrder_Click" Text="Place order" />
+
+            <br />
+             <div class="form-group">
+                   <a href="ShoppingSite.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Countinue Shopping</a>
+             </div>
         </div>
     </form>
 </body>

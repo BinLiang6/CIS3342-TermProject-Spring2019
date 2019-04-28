@@ -148,12 +148,47 @@ namespace TermProject
             txtAPIKey.Text = GetAPIKey();
         }
 
-        
-
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-           
 
+            if (txtNewPassword.Text == "")
+            {
+                lblDisplay.Text = "Please enter your new password";
+                lblDisplay.Visible = true;
+            }
+            else if (txtNewPassword.Text == txtConfirmPassword.Text)
+            {
+                string emailaddress = Session["email"].ToString();
+                string apikey = GetAPIKey();
+                string password = txtNewPassword.Text;
+
+                try
+                {
+                    lblDisplay.Visible = false;
+                    objcomm.CommandType = CommandType.StoredProcedure;
+                    objcomm.CommandText = "TP_UpdateMerchantPassword";
+
+                    objcomm.Parameters.AddWithValue("@email", emailaddress);
+                    objcomm.Parameters.AddWithValue("@apikey", apikey);
+                    objcomm.Parameters.AddWithValue("@password", password);
+
+                    objDB.DoUpdateUsingCmdObj(objcomm);
+                    lblSuccess.Visible = true;
+
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            else
+            {
+                txtNewPassword.Focus();
+                lblDisplay.Text = "Passwords do not match. Please enter again";
+                lblDisplay.Visible = true;
+            }
         }
 
         protected void btnViewSales_Click(object sender, EventArgs e)
@@ -170,6 +205,11 @@ namespace TermProject
             DataSet ds = objDB.GetDataSetUsingCmdObj(objcomm);
             gvSales.DataSource = ds;
             gvSales.DataBind();
+        }
+
+        protected void lbSignout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
         }
     }
 }

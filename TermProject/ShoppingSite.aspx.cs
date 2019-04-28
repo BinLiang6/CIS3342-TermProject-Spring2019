@@ -141,7 +141,15 @@ namespace TermProject
 
         protected void lbCart_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Cart.aspx");
+            if (Session["Productlist"] != null)
+            {
+                Response.Redirect("Cart.aspx");
+            }
+            else
+            {
+                lblNotify.Text = "Your cart is empty!";
+                lblNotify.Visible = true;
+            }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
