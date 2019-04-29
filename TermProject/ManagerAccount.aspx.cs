@@ -17,7 +17,10 @@ namespace TermProject
         SqlCommand objcomm = new SqlCommand();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["manager"] == null)
+            {
+                Response.Redirect("ManagerPassword.aspx");
+            }
         }
 
         protected void btnCustomerReport_Click(object sender, EventArgs e)
@@ -88,6 +91,11 @@ namespace TermProject
             {
                 throw ex;
             }
+        }
+
+        protected void lbSignout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
         }
     }
 }

@@ -29,6 +29,7 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session.Add("FinalCart", "");
             if (Session["username"] == null)
             {
                 Response.Redirect("login.aspx");
@@ -36,27 +37,27 @@ namespace TermProject
 
             else if (!IsPostBack)
             {
-                WebRequest request = WebRequest.Create(url);
-                WebResponse response = request.GetResponse();
+                //WebRequest request = WebRequest.Create(url);
+                //WebResponse response = request.GetResponse();
 
-                Stream theDataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(theDataStream);
-                String data = reader.ReadToEnd();
-                reader.Close();
-                response.Close();
+                //Stream theDataStream = response.GetResponseStream();
+                //StreamReader reader = new StreamReader(theDataStream);
+                //String data = reader.ReadToEnd();
+                //reader.Close();
+                //response.Close();
 
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                Department[] departments = js.Deserialize<Department[]>(data);
+                //JavaScriptSerializer js = new JavaScriptSerializer();
+                //Department[] departments = js.Deserialize<Department[]>(data);
 
-                ddlDepartment.DataSource = departments;
-                ddlDepartment.DataTextField = "name";
-                ddlDepartment.DataValueField = "department_id";
-                ddlDepartment.DataBind();
-
-                ViewState["cart"] = lbCart.Text;
-
+                ////ddlDepartment.DataSource = departments;
+                ////ddlDepartment.DataTextField = "name";
+                ////ddlDepartment.DataValueField = "department_id";
+                ////ddlDepartment.DataBind();
+          
+                Session["cart"] = lbCart.Text;                    
                 DisplayProduct();
             }
+            
         }
             
         public void DisplayProduct()
@@ -72,9 +73,9 @@ namespace TermProject
             gvProducts.DataBind();
         }
 
-        protected void btnGetProduct_Click(object sender, EventArgs e)
+        protected void GetProduct(int departmentnumber)
         {
-            int departmentnumber = Int32.Parse(ddlDepartment.SelectedValue);
+           
             url = url + "GetProductCatalog/" + departmentnumber.ToString();
 
             WebRequest request = WebRequest.Create(url);
@@ -93,15 +94,37 @@ namespace TermProject
             gvProducts.DataBind();
         }
 
+       /* protected void btnGetProduct_Click(object sender, EventArgs e)
+        {
+            int departmentnumber = Int32.Parse(ddlDepartment.SelectedValue);
+            url = url + "GetProductCatalog/" + departmentnumber.ToString();
+
+            WebRequest request = WebRequest.Create(url);
+            WebResponse response = request.GetResponse();
+
+            Stream theDataStream = response.GetResponseStream();
+            StreamReader reader = new StreamReader(theDataStream);
+            String data = reader.ReadToEnd();
+            reader.Close();
+            response.Close();
+
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            List<Product> products = js.Deserialize<List<Product>>(data);
+
+            gvProducts.DataSource = products;
+            gvProducts.DataBind();
+        }*/
+
         protected void gvProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ViewState["count"] != null)
+            if (Session["count"] != null)
             {
-                count = (int)ViewState["count"] + 1;
+                count = (int)Session["count"] + 1;
             }
             
-            lbCart.Text = ViewState["cart"].ToString() + " (" + count.ToString() + ")";
-            ViewState["count"] = count;
+            lbCart.Text = Session["cart"].ToString() + " (" + count.ToString() + ")";
+            Session["FinalCart"] = lbCart.Text;
+            Session["count"] = count;
 
             int rowIndex = gvProducts.SelectedIndex;
 
@@ -114,16 +137,16 @@ namespace TermProject
             product.Product_ID = Convert.ToInt32(gvProducts.DataKeys[rowIndex].Value.ToString());
             product.Quantity = Convert.ToInt32(tb.Text);
 
-            if(ViewState["Productlist"] != null)
+            if(Session["list"] != null)
             {
-                productlist = (ArrayList) ViewState["Productlist"];
+                productlist = (ArrayList) Session["list"];
                 productlist.Add(product);
             }
             else
             {
                 productlist.Add(product);
             }
-            ViewState["Productlist"] = productlist;
+            Session["list"] = productlist;
             Session["Productlist"] = productlist;
 
             lblNotify.Visible = false;
@@ -179,6 +202,41 @@ namespace TermProject
         protected void btnAccount_Click(object sender, EventArgs e)
         {
             Response.Redirect("CustomerAccount.aspx");
+        }
+
+        protected void ibAll_Click(object sender, ImageClickEventArgs e)
+        {
+            DisplayProduct();
+        }
+
+        protected void ibAmazon_Click(object sender, ImageClickEventArgs e)
+        {
+            int departmentnumber = 1;
+            GetProduct(departmentnumber);
+        }
+
+        protected void ibBooks_Click(object sender, ImageClickEventArgs e)
+        {
+            int departmentnumber = 2;
+            GetProduct(departmentnumber);
+        }
+
+        protected void ibComputer_Click(object sender, ImageClickEventArgs e)
+        {
+            int departmentnumber = 3;
+            GetProduct(departmentnumber);
+        }
+
+        protected void ibElectronics_Click(object sender, ImageClickEventArgs e)
+        {
+            int departmentnumber = 4;
+            GetProduct(departmentnumber);
+        }
+
+        protected void ibHomeKitchen_Click(object sender, ImageClickEventArgs e)
+        {
+            int departmentnumber = 5;
+            GetProduct(departmentnumber);
         }
     }
 }

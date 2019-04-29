@@ -224,9 +224,7 @@ namespace TermProject
                 {
                     lblDisplay.Text = "Error: " + ex.Message;
                 }
-            }
-
-            
+            }        
         }
 
         //Deleting the selected row

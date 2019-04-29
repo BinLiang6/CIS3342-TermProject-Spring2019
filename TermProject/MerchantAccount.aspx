@@ -44,7 +44,7 @@
                         <asp:Button ID="btnRetrieveAPI" class="btn btn-warning btn-block" Style="border: 1px solid grey;" runat="server" OnClick="btnRetrieveAPI_Click" Text="Retrieve API Key" />
                         &nbsp;&nbsp;&nbsp;
             <br />
-                        <asp:TextBox ID="txtAPIKey" class="form-control" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="txtAPIKey" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
                         <br />
                         <div class="form-group">
                             <label><b>Reset your password</b></label>

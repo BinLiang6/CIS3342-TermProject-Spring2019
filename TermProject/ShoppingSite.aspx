@@ -16,6 +16,9 @@
         #frmShopping {
             height: 750px;
         }
+        #imgbtn{
+            text-align: center;
+        }
     </style>
 </head>
 <body style="padding: 5px;">
@@ -26,14 +29,24 @@
         </div>
         <br />
         <div>
-            <asp:DropDownList ID="ddlDepartment" runat="server" AutoPostBack="True">
-            </asp:DropDownList>&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnGetProduct" runat="server" OnClick="btnGetProduct_Click" Text="Search" />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div>
+                <br />
+            
             <asp:Button ID="btnLogout" class="float-right" runat="server" Text="Sign Out" OnClick="btnLogout_Click" />&nbsp;&nbsp;
             <asp:Button ID="btnAccount" class="float-right" runat="server" Text="Account setting" OnClick="btnAccount_Click" />
-            <asp:LinkButton ID="lbCart" runat="server" OnClick="lbCart_Click" ><span class="glyphicon glyphicon-shopping-cart"></span> Cart</asp:LinkButton>
+            <asp:LinkButton ID="lbCart" runat="server" OnClick="lbCart_Click"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</asp:LinkButton>
             <hr />
+            </div>
+            <div id="imgbtn">
+                <asp:ImageButton ID="ibAll" runat="server" Height="200px" ImageUrl="img/all.jpg" Width="200px" OnClick="ibAll_Click" />
+                <asp:ImageButton ID="ibAmazon" runat="server" Height="200px" ImageUrl="img/amazon.png" Width="200px" OnClick="ibAmazon_Click" />
+                <asp:ImageButton ID="ibBooks" runat="server" Height="200px" ImageUrl="img/books.jpg" Width="200px" OnClick="ibBooks_Click" />
+                <asp:ImageButton ID="ibComputer" runat="server" Height="200px" ImageUrl="img/computer.jpeg" Width="200px" OnClick="ibComputer_Click" />
+                <asp:ImageButton ID="ibElectronics" runat="server" Height="200px" ImageUrl="img/electronics.jpg" Width="200px" OnClick="ibElectronics_Click" />
+                <asp:ImageButton ID="ibHomeKitchen" runat="server" Height="200px" ImageUrl="img/homekitchen.jpg" Width="200px" OnClick="ibHomeKitchen_Click" />
+            </div>
+            <hr />
+            
             <br />
             <asp:Label ID="lblNotify" class=" alert alert-danger btn-block" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
             <br />
@@ -73,7 +86,7 @@
                 <HeaderStyle HorizontalAlign="Center" />
             </asp:GridView>
             <br />
-            
+
             <asp:Button ID="Button1" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnViewCart_Click" Text="View Cart" />
             <br />
             <br />
