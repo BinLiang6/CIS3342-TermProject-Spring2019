@@ -61,7 +61,8 @@ namespace TermProject
             // Convert the bytes to a string and display it.
             encryptedPassword = Convert.ToBase64String(encryptedBytes);
 
-            if (txtName.Text != "" && txtEmail.Text != "" && txtPassword.Text != "" && txtDesc.Text != "" && txtAddress.Text != "" && txtCity.Text != "" && txtState.Text != "" && txtZipcode.Text != "" && txtPhone.Text != "")
+            if (txtName.Text != "" && txtEmail.Text != "" && txtPassword.Text != "" && txtDesc.Text != "" && txtAddress.Text != "" 
+                && txtCity.Text != "" && txtState.Text != "" && txtZipcode.Text != "" && txtPhone.Text != "")
             {
                 merchant.Seller_site = txtName.Text;
                 merchant.Email = txtEmail.Text;
@@ -74,58 +75,60 @@ namespace TermProject
                 merchant.ZipCode = txtZipcode.Text;
                 merchant.Phone = txtPhone.Text;
                 lblDisplay.Text = "";
+
+
+                if (merchant != null)
+                {
+                    try
+                    {
+                        url = url + "Register/Merchant/";
+
+                        JavaScriptSerializer js = new JavaScriptSerializer();
+                        string jsonMerchant = js.Serialize(merchant);
+
+                        WebRequest request = WebRequest.Create(url);
+                        request.Method = "POST";
+                        request.ContentLength = jsonMerchant.Length;
+                        request.ContentType = "application/json";
+
+                        StreamWriter writer = new StreamWriter(request.GetRequestStream());
+                        writer.Write(jsonMerchant);
+                        writer.Flush();
+                        writer.Close();
+
+                        WebResponse response = request.GetResponse();
+                        Stream theDataStream = response.GetResponseStream();
+                        StreamReader streamReader = new StreamReader(theDataStream);
+                        String data = streamReader.ReadToEnd();
+                        streamReader.Close();
+                        response.Close();
+
+                        if (data == "true")
+                        {
+                            if (lblNotify.Visible == true)
+                            {
+                                lblNotify.Visible = false;
+                            }
+                            lblSuccess.Visible = true;
+                            lblSuccess.Text = "Successfully added a merchant!";
+                        }
+                        else
+                        {
+                            lblNotify.Text = "An error occurred! The merchant name is already exists!";
+                            lblNotify.Visible = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        lblDisplay.Text = "Error: " + ex.Message;
+                    }
+                }
             }
             else
             {
                 lblDisplay.Text = "Please do not leave any field empty";
             }
             
-            if (merchant != null)
-            {
-                try
-                {
-                    url = url + "Register/Merchant/";
-
-                    JavaScriptSerializer js = new JavaScriptSerializer();
-                    string jsonMerchant = js.Serialize(merchant);
-
-                    WebRequest request = WebRequest.Create(url);
-                    request.Method = "POST";
-                    request.ContentLength = jsonMerchant.Length;
-                    request.ContentType = "application/json";
-
-                    StreamWriter writer = new StreamWriter(request.GetRequestStream());
-                    writer.Write(jsonMerchant);
-                    writer.Flush();
-                    writer.Close();
-
-                    WebResponse response = request.GetResponse();
-                    Stream theDataStream = response.GetResponseStream();
-                    StreamReader streamReader = new StreamReader(theDataStream);
-                    String data = streamReader.ReadToEnd();
-                    streamReader.Close();
-                    response.Close();
-
-                    if (data == "true")
-                    {
-                        if (lblNotify.Visible == true)
-                        {
-                            lblNotify.Visible = false;
-                        }
-                        lblSuccess.Visible = true;
-                        lblSuccess.Text = "Successfully added a merchant!";
-                    }
-                    else
-                    {
-                        lblNotify.Text = "An error occurred! The username is already exists!";
-                        lblNotify.Visible = true;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    lblDisplay.Text = "Error: " + ex.Message;
-                }
-            }
         }
     }
 }

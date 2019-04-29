@@ -34,6 +34,8 @@
                 <div class="card">
                     <article class="card-body">
                         <div class="form-group">
+                            <asp:LinkButton ID="lbSignout" runat="server" class="float-right" OnClick="lbSignout_Click">Sign out</asp:LinkButton>
+                            <br />
                             <asp:Label ID="lblcustomersales" runat="server"><b>Customer Sales</b></asp:Label>
                             <asp:Button ID="btnCustomerReport" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnCustomerReport_Click" Text="View Customer Sales Report" />
                         </div>

@@ -48,8 +48,11 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <asp:CheckBox ID="chkRemember" runat="server" /> Remember me
+                                <asp:LinkButton ID="lbManager" class="float-right" runat="server" OnClick="lbManager_Click">Amazon Manager?</asp:LinkButton>
+
                                 <asp:Label ID="lblDisplay" class="float-right" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-                            </div>
+                            
+                                                            </div>
                             <!-- checkbox .// -->
                         </div>
                         <!-- form-group// -->

@@ -76,9 +76,16 @@
     <Content Include="CustomerRegistration.aspx" />
     <Content Include="bootstrap-style.css" />
     <Content Include="forgot-password.aspx" />
+    <Content Include="img\all.jpg" />
     <Content Include="img\amazon.jpg" />
+    <Content Include="img\amazon.png" />
+    <Content Include="img\books.jpg" />
+    <Content Include="img\computer.jpeg" />
+    <Content Include="img\electronics.jpg" />
+    <Content Include="img\homekitchen.jpg" />
     <Content Include="login.aspx" />
     <Content Include="ManagerAccount.aspx" />
+    <Content Include="ManagerPassword.aspx" />
     <Content Include="merchant-forgot-password.aspx" />
     <Content Include="MerchantAccount.aspx" />
     <Content Include="MerchantRegistration.aspx" />
@@ -136,6 +143,13 @@
     </Compile>
     <Compile Include="ManagerAccount.aspx.designer.cs">
       <DependentUpon>ManagerAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerPassword.aspx.cs">
+      <DependentUpon>ManagerPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManagerPassword.aspx.designer.cs">
+      <DependentUpon>ManagerPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="merchant-forgot-password.aspx.cs">
       <DependentUpon>merchant-forgot-password.aspx</DependentUpon>

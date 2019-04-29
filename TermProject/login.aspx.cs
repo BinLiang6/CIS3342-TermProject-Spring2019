@@ -183,5 +183,10 @@ namespace TermProject
                 Response.Redirect("merchant-forgot-password.aspx");
             }
         }
+
+        protected void lbManager_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ManagerPassword.aspx");
+        }
     }
 }
