@@ -138,7 +138,7 @@ namespace TermProject
                 lblSuccess.Visible = true;
                 
                 Session.Clear();
-                Response.AddHeader("REFRESH", "3;URL=login.aspx");
+                Response.AddHeader("REFRESH", "2;URL=login.aspx");
             }
             else
             {
