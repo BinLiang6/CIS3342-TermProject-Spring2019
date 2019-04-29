@@ -35,8 +35,8 @@
                     <article class="card-body">
                         <div class="form-group">
                             <asp:LinkButton ID="lbSignout" runat="server" class="float-right" OnClick="lbSignout_Click">Sign out</asp:LinkButton>
-                            <br />
                             <asp:Label ID="lblcustomersales" runat="server"><b>Customer Sales</b></asp:Label>
+                            <br /><br />
                             <asp:Button ID="btnCustomerReport" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnCustomerReport_Click" Text="View Customer Sales Report" />
                         </div>
 
@@ -46,25 +46,25 @@
                                 <asp:BoundField DataField="username" HeaderText="Username" />
                                 <asp:BoundField DataField="name" HeaderText="Name" />
                                 <asp:BoundField DataField="email" HeaderText="Email" />
-                                <asp:BoundField DataField="total" HeaderText="Total" />
+                                <asp:BoundField DataField="total" DataFormatString="{0:$###,##0.00}" HeaderText="Total" />
                             </Columns>
                         </asp:GridView>
                         <br />
                         <hr />
                         <div class="form-group">
                             <asp:Label ID="Label1" runat="server"><b>Inventory</b></asp:Label>
+                            <br /><br />
                             <asp:Button ID="btnSearchInventory" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnSearchInventory_Click" Text="Search Inventory" />
                             <br />
-                            Quantity is less than
+                            Quantity is less than: 
                             <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
                             <asp:Label ID="lblDisplay" runat="server" ForeColor="Red" Text="Please enter the quantity" Visible="False"></asp:Label>
                         </div>
-                        <br />
                         <asp:GridView ID="gvInventory" runat="server" AutoGenerateColumns="False" Width="100%">
                             <Columns>
                                 <asp:BoundField DataField="name" HeaderText="Department Name" />
                                 <asp:BoundField DataField="desc" HeaderText="Product Description" />
-                                <asp:BoundField DataField="price" HeaderText="Price" />
+                                <asp:BoundField DataField="price" DataFormatString="{0:$###,##0.00}" HeaderText="Price" />
                                 <asp:BoundField DataField="qty" HeaderText="Quantity" />
                             </Columns>
                         </asp:GridView>
@@ -72,7 +72,7 @@
                         <hr />
                         <div class="form-group">
                             <asp:Label ID="Label3" runat="server"><b>Amazon Sales</b></asp:Label>
-
+                            <br /><br />
                             <asp:Button ID="btnSalesReport" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnSalesReport_Click" Text="View Amazon Sales Report" />
                             <br />
                         </div>
