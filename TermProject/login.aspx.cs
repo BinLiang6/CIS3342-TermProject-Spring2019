@@ -119,7 +119,7 @@ namespace TermProject
                             Response.Cookies.Add(customerCookie);
                         }
 
-                        Response.AddHeader("REFRESH", "3;URL=ShoppingSite.aspx");
+                        Response.AddHeader("REFRESH", "2;URL=ShoppingSite.aspx");
                     }
                     catch
                     {

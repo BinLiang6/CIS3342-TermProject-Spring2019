@@ -47,7 +47,7 @@
                         <br />
                         <asp:TextBox ID="txtDesc" class="form-control" runat="server"></asp:TextBox>
                         <br />
-                        <label>API URL (optional)</label>
+                        <label>API URL</label>
                         <br />
                         <asp:TextBox ID="txtUrl" class="form-control" runat="server"></asp:TextBox>
                         <br />
