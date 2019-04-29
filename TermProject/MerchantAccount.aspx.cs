@@ -39,6 +39,7 @@ namespace TermProject
         {
             if (!IsPostBack)
             {
+                objcomm.Parameters.Clear();
                 ShowAccountInfo();
             }
         }
@@ -46,12 +47,11 @@ namespace TermProject
         protected void ShowAccountInfo()
         {
             string merchantEmail = Session["email"].ToString();
-           
 
             objcomm.CommandType = CommandType.StoredProcedure;
             objcomm.CommandText = "TP_GetMerchantInfo";
             objcomm.Parameters.AddWithValue("@theEmail", merchantEmail);
-            
+
             DataSet myDataSet = objDB.GetDataSetUsingCmdObj(objcomm);
 
             gvAccountInfo.DataSource = myDataSet;

@@ -25,11 +25,11 @@ namespace TermProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack && Request.Cookies["CIS3342_Cookie"] != null)
+            if (!IsPostBack && Request.Cookies["Amazon_CIS3342_Cookie"] != null)
             {
                 String accountType = ddlLogin.SelectedValue.ToString();
                 
-                HttpCookie cookie = Request.Cookies["CIS3342_Cookie"];
+                HttpCookie cookie = Request.Cookies["Amazon_CIS3342_Cookie"];
                 txtUsername.Text = cookie.Values["username"].ToString();
                 txtPassword.Text = cookie.Values["password"].ToString();
                 ddlLogin.SelectedValue = cookie.Values["accountType"].ToString();
@@ -110,7 +110,7 @@ namespace TermProject
 
                         if (chkRemember.Checked == true)
                         {
-                            HttpCookie customerCookie = new HttpCookie("CIS3342_Cookie");
+                            HttpCookie customerCookie = new HttpCookie("Amazon_CIS3342_Cookie");
                             customerCookie.Values["username"] = txtUsername.Text;
                             customerCookie.Values["password"] = txtPassword.Text;
                             customerCookie.Values["accountType"] = ddlLogin.SelectedValue;
@@ -119,7 +119,7 @@ namespace TermProject
                             Response.Cookies.Add(customerCookie);
                         }
 
-                        Response.AddHeader("REFRESH", "3;URL=ShoppingSite.aspx");
+                        Response.AddHeader("REFRESH", "2;URL=ShoppingSite.aspx");
                     }
                     catch
                     {
@@ -152,7 +152,7 @@ namespace TermProject
 
                         if (chkRemember.Checked == true)
                         {
-                            HttpCookie customerCookie = new HttpCookie("CIS3342_Cookie");
+                            HttpCookie customerCookie = new HttpCookie("Amazon_CIS3342_Cookie");
                             customerCookie.Values["username"] = txtUsername.Text;
                             customerCookie.Values["password"] = txtPassword.Text;
                             customerCookie.Values["accountType"] = ddlLogin.SelectedValue;
