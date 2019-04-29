@@ -15,6 +15,7 @@ namespace ClassLibrary
         private String sq1;
         private String sq2;
         private String sq3;
+        private double total;
 
 
         public Customer()
@@ -56,6 +57,12 @@ namespace ClassLibrary
         {
             get { return sq3; }
             set { sq3 = value; }
+        }
+
+        public Double Total
+        {
+            get { return total; }
+            set { total = value; }
         }
 
 

@@ -10,8 +10,10 @@ using System.Web.Script.Serialization;
 using System.Net;
 using Utilities;
 using ClassLibrary;
+using System.Data;
+using System.Data.SqlClient;
 using System.Runtime.Serialization.Formatters.Binary;       //needed for BinaryFormatter
-using System.IO;                                            //needed for the MemoryStream
+using System.IO;         //needed for the MemoryStream
 
 namespace TermProject
 {
@@ -22,12 +24,14 @@ namespace TermProject
         ArrayList productlist = new ArrayList();
 
         DBConnect objDB = new DBConnect();
+        SqlCommand objCommand = new SqlCommand();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                showCart(ShowTotalPrice());             
+                showCart(ShowTotalPrice());
+                UpdateTotalSales();
             }
         }
 
@@ -70,8 +74,31 @@ namespace TermProject
             gvCart.DataBind();
         }
 
+        public void UpdateTotalSales()
+        {
+            int customerid = Convert.ToInt16(Session["customerid"].ToString());
+            decimal total = Convert.ToDecimal(ShowTotalPrice());
+            try
+            {
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_UpdateTotalSales";
+
+                objCommand.Parameters.AddWithValue("@id", customerid);
+                objCommand.Parameters.AddWithValue("@total", total );
+
+                objDB.DoUpdateUsingCmdObj(objCommand);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
+
         //Calculate the total cost of the cart
-        public double ShowTotalPrice()
+        protected double ShowTotalPrice()
         {
             productlist = (ArrayList)Session["Productlist"];
             double total = 0.0;
@@ -83,6 +110,25 @@ namespace TermProject
             }
 
             return total;
+        }
+
+        protected void UpdateQuantity()
+        {
+            productlist = (ArrayList)Session["Productlist"];
+             foreach (Product p in productlist)
+            {
+                int qty = p.Quantity;
+                int id = p.Product_ID;
+
+                objCommand.Parameters.Clear();
+                objCommand.CommandType = CommandType.StoredProcedure;
+                objCommand.CommandText = "TP_UpdateQTY";
+
+                objCommand.Parameters.AddWithValue("@id", id);
+                objCommand.Parameters.AddWithValue("@quantity", qty);
+
+                objDB.DoUpdateUsingCmdObj(objCommand);
+            }
         }
 
         //Edit the selecting row
@@ -127,7 +173,8 @@ namespace TermProject
             Product product = new Product();
             // Serialize a City object into a JSON string
             JavaScriptSerializer js = new JavaScriptSerializer();
-
+            UpdateTotalSales();
+            UpdateQuantity();
             //Adding each product into the database
             for (int row = 0; row < gvCart.Rows.Count; row++)
             {
@@ -162,6 +209,7 @@ namespace TermProject
 
                     if (data == "true")
                     {
+                        
                         lblSuccess.Visible = true;
                     }
                     else
@@ -177,6 +225,8 @@ namespace TermProject
                     lblDisplay.Text = "Error: " + ex.Message;
                 }
             }
+
+            
         }
 
         //Deleting the selected row
