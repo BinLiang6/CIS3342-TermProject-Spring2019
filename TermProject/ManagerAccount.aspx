@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="bootstrap-style.css" />
-    <title>Amazon Manager</title>
+    <title>Amazon - Manager</title>
     <style type="text/css">
         *, ::after, ::before {
             text-shadow: none !important;
@@ -23,15 +23,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <br />
         <div class="d-flex justify-content-center">
             <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
         </div>
         <br />
         <div class="row">
-            <div class="col-md-3">
-                <br />
-                
-            </div>
+            <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="card">
                     <article class="card-body">
@@ -39,7 +37,7 @@
                             <asp:Label ID="lblcustomersales" runat="server"><b>Customer Sales</b></asp:Label>
                             <asp:Button ID="btnCustomerReport" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnCustomerReport_Click" Text="View Customer Sales Report" />
                         </div>
-                             
+
                         <br />
                         <asp:GridView ID="gvCustomerSales" runat="server" AutoGenerateColumns="False" Width="100%">
                             <Columns>
@@ -52,13 +50,12 @@
                         <br />
                         <hr />
                         <div class="form-group">
-                            <asp:Label ID="Label1" runat="server" ><b>Inventory</b></asp:Label>
-            <asp:Button ID="btnSearchInventory" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnSearchInventory_Click" Text="Search Inventory" />
+                            <asp:Label ID="Label1" runat="server"><b>Inventory</b></asp:Label>
+                            <asp:Button ID="btnSearchInventory" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnSearchInventory_Click" Text="Search Inventory" />
                             <br />
-                        Quantity is less than
-                        <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
-                             <asp:Label ID="lblDisplay" runat="server" ForeColor="Red" Text="Please enter the quantity" Visible="False"></asp:Label>
-                           
+                            Quantity is less than
+                            <asp:TextBox ID="txtQuantity" runat="server"></asp:TextBox>
+                            <asp:Label ID="lblDisplay" runat="server" ForeColor="Red" Text="Please enter the quantity" Visible="False"></asp:Label>
                         </div>
                         <br />
                         <asp:GridView ID="gvInventory" runat="server" AutoGenerateColumns="False" Width="100%">
@@ -72,13 +69,12 @@
                         <br />
                         <hr />
                         <div class="form-group">
-                             <asp:Label ID="Label3" runat="server"><b>Amazon Sales</b></asp:Label>
-                         
-                             <asp:Button ID="btnSalesReport"  class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnSalesReport_Click" Text="View Amazon Sales Report" />
-                        <br />
+                            <asp:Label ID="Label3" runat="server"><b>Amazon Sales</b></asp:Label>
+
+                            <asp:Button ID="btnSalesReport" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" OnClick="btnSalesReport_Click" Text="View Amazon Sales Report" />
+                            <br />
                         </div>
-                        
-                        <br />
+
                         <asp:GridView ID="gvAmazonSales" runat="server" AutoGenerateColumns="False" Width="100%">
                             <Columns>
                                 <asp:BoundField DataField="product_id" HeaderText="Product ID" />
@@ -100,7 +96,6 @@
             </div>
             <div class="col-md-3"></div>
         </div>
-
     </form>
 </body>
 </html>
