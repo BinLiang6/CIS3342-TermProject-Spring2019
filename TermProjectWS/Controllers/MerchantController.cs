@@ -84,6 +84,7 @@ namespace TermProjectWS.Controllers
             objCommand.CommandText = "TP_GetMerchant_By_ApiKeyAndSeller";
             objCommand.Parameters.AddWithValue("@theAPI", merchant.Apikey);
             objCommand.Parameters.AddWithValue("@theSeller", merchant.Seller_site);
+            objCommand.Parameters.AddWithValue("@theEmail", merchant.Email);
             DataSet myDS = objDB.GetDataSetUsingCmdObj(objCommand);
 
             if (myDS.Tables[0].Rows.Count == 0) //If there is no other apikey or username already exists

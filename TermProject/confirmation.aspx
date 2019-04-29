@@ -24,7 +24,7 @@
                     <label><b>Purchase confirmation</b></label>
                     <br />
                     <asp:Label ID="lblCustomer" runat="server" Text=""></asp:Label>
-                    <br />
+                    <br /><br />
                     <asp:Label ID="lblDisplay" runat="server" Text=""></asp:Label>
                     <br />
                     <asp:GridView ID="gvConfirm" runat="server" AutoGenerateColumns="False" ShowFooter="True" Width="100%">
@@ -62,6 +62,7 @@
                         <a href="ShoppingSite.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Go back to shopping site</a>
                     </div>
                 </div>
+                <br />
             </div>
             <div class="col-md-3"></div>
         </div>

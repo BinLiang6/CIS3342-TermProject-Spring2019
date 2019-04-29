@@ -87,18 +87,24 @@ namespace TermProject
             Email objEmail = new Email();
             String strTO = myDS.Tables[0].Rows[0]["email"].ToString();
             String strFROM = "amazon-cis3342@temple.edu";
-            String strSubject = "Order confirmation";
-            String strMessage = "";
+            String strSubject = "Amazon - Order confirmation";
+            String strMessage = "Item purchased: ";
+            double total = 0.0;
+
             for (int row = 0; row < gvConfirm.Rows.Count; row++)
             {
-                strMessage = gvConfirm.Rows[row].Cells[1].Text.ToString() + " | " + gvConfirm.Rows[row].Cells[2].Text.ToString() + " | Quantity: " 
-                            + gvConfirm.Rows[row].Cells[3].Text.ToString() + " | Price: $" + gvConfirm.Rows[row].Cells[4].Text.ToString() + "<br />";
+                strMessage = strMessage + "<br />" + "- " + gvConfirm.Rows[row].Cells[1].Text.ToString() + " | " 
+                            + gvConfirm.Rows[row].Cells[2].Text.ToString() + " | Quantity: " + gvConfirm.Rows[row].Cells[3].Text.ToString() 
+                            + " | Price: $" + gvConfirm.Rows[row].Cells[4].Text.ToString();
+                total = total + Convert.ToDouble(gvConfirm.Rows[row].Cells[4].Text.ToString());
             }
+
+            strMessage = lblCustomer.Text.ToString() + "<br /><br />" + strMessage + "<br /><br />" + "Order total amount: $" + total.ToString();
 
             try
             {
                 objEmail.SendMail(strTO, strFROM, strSubject, strMessage);
-                lblDisplay.Text = strMessage;
+                lblDisplay.Text = "<b>A confirmation email has been sent to you</b>";
             }
             catch (Exception ex)
             {
