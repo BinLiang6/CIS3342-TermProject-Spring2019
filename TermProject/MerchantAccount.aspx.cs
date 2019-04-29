@@ -48,6 +48,7 @@ namespace TermProject
             string merchantEmail = Session["email"].ToString();
             string merchantPassword = Session["password"].ToString();
 
+            objcomm.Parameters.Clear();
             objcomm.CommandType = CommandType.StoredProcedure;
             objcomm.CommandText = "TP_GetMerchantInfo";
             objcomm.Parameters.AddWithValue("@theEmail", merchantEmail);
