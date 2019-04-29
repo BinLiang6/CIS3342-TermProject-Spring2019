@@ -21,69 +21,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                        <asp:LinkButton ID="lbSignout" class="float-right" runat="server" OnClick="lbSignout_Click">Sign out</asp:LinkButton>
-
-                        <br />
-                        <label><b>Account Information</b></label>
-                        <br />
-                        <asp:GridView ID="gvAccountInfo" runat="server" AutoGenerateColumns="False" Width="100%" OnRowCancelingEdit="gvAccountInfo_RowCancelingEdit" OnRowEditing="gvAccountInfo_RowEditing" OnRowUpdating="gvAccountInfo_RowUpdating">
-                            <Columns>
-                                <asp:BoundField DataField="address" HeaderText="Address" />
-                                <asp:BoundField DataField="city" HeaderText="City" />
-                                <asp:BoundField DataField="state" HeaderText="State" />
-                                <asp:BoundField DataField="zipcode" HeaderText="Zipcode" />
-                                <asp:BoundField DataField="phone" HeaderText="Phone" />
-                                <asp:BoundField DataField="email" HeaderText="Email" />
-                                <asp:CommandField ButtonType="Button" HeaderText="Edit" ShowEditButton="True" />
-                            </Columns>
-                        </asp:GridView>
-                        <br />
-                        <asp:Button ID="btnRetrieveAPI" class="btn btn-warning btn-block" Style="border: 1px solid grey;" runat="server" OnClick="btnRetrieveAPI_Click" Text="Retrieve API Key" />
-                        &nbsp;&nbsp;&nbsp;
-            <br />
-                        <asp:TextBox ID="txtAPIKey" class="form-control" runat="server" ReadOnly="True"></asp:TextBox>
-                        <br />
-                        <div class="form-group">
-                            <label><b>Reset your password</b></label>
-                            <div class="form-group">
-                                <label>Enter your current password</label>
-                                <asp:TextBox ID="txtPassword" class="form-control" runat="server" type="password" />
-                            </div>
-                            <div class="form-group">
-                                <label>Enter your new password</label>
-                                <asp:TextBox ID="txtNewPassword" class="form-control" runat="server" type="password" />
-                            </div>
-                            <div class="form-group">
-                                <label>Confirm new password</label>
-                                <asp:TextBox ID="txtConfirmPassword" class="form-control" runat="server" type="password" />
-                            </div>
-                            <div class="form-group">
-                                <asp:Label ID="lblDisplay" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-                                <asp:Label ID="lblSuccess" class="alert alert-success" runat="server" Text="Password reset successful!" Visible="false"></asp:Label>
-                            </div>
-                            <div class="form-group">
-                                <asp:Button ID="btnSubmit" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" Text="Submit" OnClick="btnSubmit_Click" />
-                            </div>
-                        </div>
-                        <br />
-                        <asp:Button ID="btnViewSales" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" Text="View Sales" OnClick="btnViewSales_Click" />
-                        <br />
-                        <asp:GridView ID="gvSales" runat="server" AutoGenerateColumns="False">
-                            <Columns>
-                                <asp:BoundField DataField="product_id" HeaderText="Product ID" />
-                                <asp:BoundField DataField="title" HeaderText="Title" />
-                                <asp:BoundField DataField="customer_name" HeaderText="Name" />
-                                <asp:BoundField DataField="customer_address" HeaderText="Address" />
-                                <asp:BoundField DataField="customer_city" HeaderText="City" />
-                                <asp:BoundField DataField="customer_state" HeaderText="State" />
-                                <asp:BoundField DataField="customer_zipcode" HeaderText="Zipcode" />
-                                <asp:BoundField DataField="customer_phone" HeaderText="Phone" />
-                                <asp:BoundField DataField="customer_email" HeaderText="Email" />
-                            </Columns>
-                        </asp:GridView>
-
-                    </article>
-                <br />
+                <asp:LinkButton ID="lbSignout" class="float-right" runat="server" OnClick="lbSignout_Click">Sign out</asp:LinkButton>
                 <label><b>Account Information</b></label>
                 <br />
                 <div class="col-md-3"></div>
@@ -113,7 +51,7 @@
                 <asp:Button ID="btnRetrieveAPI" class="btn btn-warning btn-block" Style="border: 1px solid grey;" runat="server" OnClick="btnRetrieveAPI_Click" Text="Retrieve API Key" />
                 &nbsp;&nbsp;&nbsp;
                 <br />
-                <asp:TextBox ID="txtAPIKey" class="form-control" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtAPIKey" class="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                 <br />
                 <div class="form-group">
                     <label><b>Reset your password</b></label>

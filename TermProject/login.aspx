@@ -38,21 +38,20 @@
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
-                            
+
                             <asp:LinkButton ID="lbForgotPassword" class="float-right" runat="server" OnClick="lbForgotPassword_Click">Forgot your password?</asp:LinkButton>
-                            <label><b>Password</b>
+                            <label>
+                                <b>Password</b>
                             </label>
                             &nbsp;<asp:TextBox ID="txtPassword" class="form-control" runat="server" placeholder="********" type="password" />
                         </div>
                         <!-- form-group// -->
                         <div class="form-group">
                             <div class="checkbox">
-                                <asp:CheckBox ID="chkRemember" runat="server" /> Remember me
-                                <asp:LinkButton ID="lbManager" class="float-right" runat="server" OnClick="lbManager_Click">Amazon Manager?</asp:LinkButton>
-
+                                <asp:CheckBox ID="chkRemember" runat="server" />
+                                Remember me
                                 <asp:Label ID="lblDisplay" class="float-right" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-                            
-                                                            </div>
+                            </div>
                             <!-- checkbox .// -->
                         </div>
                         <!-- form-group// -->
@@ -65,9 +64,13 @@
                             <a href="CustomerRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Create your Amazon account</a>
                         </div>
                         <hr />
-                        <div class="form-group">    
-                            <p style="text-align: center;">-- Want to sell your products on Amazon? --</p>                 
+                        <div class="form-group">
+                            <p style="text-align: center;">-- Want to sell your products on Amazon? --</p>
                             <a href="MerchantRegistration.aspx" class="btn btn-outline-dark btn-block" style="border: 1px solid grey;">Register to become a Merchant</a>
+                        </div>
+                        <hr />
+                        <div class="d-flex justify-content-center">
+                            <asp:LinkButton ID="lbManager" class="float-right" runat="server" OnClick="lbManager_Click">Amazon Manager?</asp:LinkButton>
                         </div>
                     </article>
                 </div>

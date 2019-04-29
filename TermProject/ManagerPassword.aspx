@@ -18,25 +18,22 @@
             <img src="img/amazon.jpg" alt="amazon.com" style="width: 166px; height: 60px;" />
         </div>
         <br />
-
         <div class="row">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
                 <div class="card">
                     <article class="card-body">
                         <div class="form-group">
                             <asp:Label ID="Label1"  runat="server"><b>PASSWORD</b></asp:Label>
-
+                            <br />
                             &nbsp;<asp:Label ID="lblDisplay" runat="server" ForeColor="Red" Text="Wrong Password!" Visible="False"></asp:Label>
 
                             <asp:TextBox ID="txtPassword" class="form-control" runat="server" type="password"></asp:TextBox>
                             <br />
 
                             <div class="form-row">
-
                                 <div class="col-md-6">
-                                    <asp:Button ID="btnBack" class="btn btn-outline-dark btn-block" Style="border: 1px solid grey;" runat="server" Text="Go back to Login Page" OnClick="btnBack_Click" />
+                                    <asp:Button ID="btnBack" class="btn btn-outline-dark btn-block" Style="border: 1px solid grey;" runat="server" Text="Go back to Sign in" OnClick="btnBack_Click" />
                                 </div>
                                 <div class="col-md-6">
                                     <asp:Button ID="btnContinue" class="btn btn-warning btn-block" runat="server" Style="border: 1px solid grey;" Text="Continue" OnClick="btnContinue_Click" />
@@ -46,7 +43,7 @@
                     </article>
                 </div>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-4"></div>
         </div>
     </form>
 </body>
